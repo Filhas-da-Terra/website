@@ -14,7 +14,7 @@ export default function Home() {
           src="/hero.png"
           alt="Instituto Filhas da Terra"
           fill
-          style={{objectFit: "cover"}}
+          style={{ objectFit: "cover" }}
           className="opacity-40"
           priority
         />
@@ -25,8 +25,8 @@ export default function Home() {
           <p className="text-lg mt-4 text-white drop-shadow animate-fade-down animate-duration-1000 animate-delay-[500ms]">
             Atuamos em Ceilândia e Sol Nascente por meio de ações culturais, educativas e comunitárias
           </p>
-          <Link href="/quem-somos">
-            <Button className="mt-6 text-base">Conheça mais</Button>
+          <Link href="/about">
+            <Button className="mt-6 text-base cursor-pointer">Conheça mais</Button>
           </Link>
         </div>
       </section>
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
       </section>
 
-    <CarouselComponent />
+      <CarouselComponent />
 
       {/* ÁREAS DE ATUAÇÃO */}
       <section className="py-16 px-6 bg-white">
@@ -82,7 +82,16 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+      <section className="relative w-full mb-6 h-[80vh] flex items-center justify-center bg-white">
+        <Image
+          src="/logoPreta.png"
+          alt="Instituto Filhas da Terra"
+          style={{ objectFit: "cover" }}
+          priority
+          width={350}
+          height={350}
+        />
+      </section>
       {/* CTA */}
       <section className="py-16 px-6 bg-[#2E4D3D] text-white text-center">
         <h2 className="text-3xl font-bold mb-4">Vamos juntas transformar o mundo!</h2>

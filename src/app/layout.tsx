@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import BackToTop from "./components/backToTop";
 
 
 const urbanist = Urbanist({
@@ -27,6 +28,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <BackToTop />
         <Footer />
       </body>
     </html>

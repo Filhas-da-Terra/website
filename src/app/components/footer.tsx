@@ -1,11 +1,15 @@
 import { Instagram, Facebook, Twitter } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
     <footer className="bg-[#4c1d95] text-white">
       <div className="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
         <div>
-          <h4 className="text-lg font-semibold mb-2">Instituto Filhas da Terra</h4>
+          <div className="flex items-center mb-2">
+            <Image src="/logoBranca.png" alt="Logo" width={50} height={50} className='mr-4' />
+            <h4 className="text-lg font-semibold">Instituto Filhas da Terra</h4>
+          </div>
           <p>
             Organização sem fins lucrativos com atuação em Ceilândia e Sol Nascente, promovendo justiça
             socioambiental com foco em mulheres negras e pessoas LGBTQIAPN+.

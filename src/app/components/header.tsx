@@ -17,7 +17,7 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <header className="bg-[#14532d] text-white shadow-md">
+    <header className="bg-transparent text-white shadow-md">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
@@ -25,7 +25,7 @@ export default function Header() {
         </Link>
 
         {/* Navegação desktop */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-6 text-black">
           <Link href="/" className="hover:underline">Início</Link>
           <Link href="/about" className="hover:underline">Quem Somos</Link>
           <Link href="/projects" className="hover:underline">Projetos</Link>
@@ -81,7 +81,7 @@ export default function Header() {
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="bg-white text-black max-w-sm text-center">
-                    <DialogTitle className="text-lg font-semibold mb-4">Apoie com Pix</DialogTitle>
+                    <DialogTitle className="text-lg font-semibold mb-4">Apoie com Pix </DialogTitle>
                     <Image
                       src="/qrcode.jpg"
                       alt="QR Code para doação"
