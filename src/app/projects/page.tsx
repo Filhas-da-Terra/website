@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import Image from "next/image";
 
 const projetos = [
     {
@@ -46,7 +47,9 @@ export default function ProjetosPage() {
             <section className="grid md:grid-cols-2 gap-6 animate-fade-down animate-duration-1000">
                 {projetos.map((projeto, index) => (
                     <Card key={index} className="rounded-2xl shadow-md">
-                        <img
+                        <Image
+                            width={500}
+                            height={300}
                             src={projeto.imagem}
                             alt={projeto.titulo}
                             className="w-full h-48 object-cover rounded-t-2xl"

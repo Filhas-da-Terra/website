@@ -1,13 +1,17 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Lightbulb, HeartHandshake, Leaf, Users } from "lucide-react"
+import { Lightbulb, HeartHandshake, Leaf, Users, Computer } from "lucide-react"
 import CarouselComponent from "./components/carousel"
+import { useTheme } from 'next-themes';
 
 export default function Home() {
+  const { theme, setTheme } = useTheme();
+  const logoSrc = theme === 'light' ? '/logoPreta.png' : '/logobranca1.png';
   return (
-    <main className="min-h-screen bg-[#F2F2F2] text-[#111827]">
+    <main className="bg-[#F2F2F2] dark:bg-black text-[#111827] dark:text-white">
       {/* HERO */}
       <section className="relative w-full h-[80vh] flex items-center justify-center bg-black">
         <Image
@@ -62,7 +66,7 @@ export default function Home() {
       <CarouselComponent />
 
       {/* ÁREAS DE ATUAÇÃO */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-16 px-6 bg-white dark:bg-black">
         <h2 className="text-3xl font-bold mb-10 text-center">Áreas de Atuação</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {[
@@ -71,7 +75,7 @@ export default function Home() {
             { icon: <Lightbulb className="text-yellow-500" />, title: "Cultura e Artes" },
             { icon: <Users className="text-indigo-600" />, title: "Economia Solidária" },
             { icon: <Lightbulb className="text-purple-600" />, title: "Educação e Formação" },
-            { icon: <Users className="text-rose-600" />, title: "Ciência e Tecnologia" },
+            { icon: <Computer className="text-rose-600" />, title: "Ciência e Tecnologia" },
           ].map((area, i) => (
             <Card key={i}>
               <CardContent className="p-6 flex flex-col items-center text-center">
@@ -82,9 +86,9 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="relative w-full mb-6 h-[80vh] flex items-center justify-center bg-white">
+      <section className="relative w-full mb-6 h-[80vh] flex items-center justify-center bg-white dark:bg-black">
         <Image
-          src="/logoPreta.png"
+          src={logoSrc}
           alt="Instituto Filhas da Terra"
           style={{ objectFit: "cover" }}
           priority
@@ -96,7 +100,7 @@ export default function Home() {
       <section className="py-16 px-6 bg-[#2E4D3D] text-white text-center">
         <h2 className="text-3xl font-bold mb-4">Vamos juntas transformar o mundo!</h2>
         <p className="mb-6">Participe de nossas ações ou entre em contato com a equipe do Instituto.</p>
-        <Link href="/contato">
+        <Link href="/contact">
           <Button variant="secondary" className="text-[#2E4D3D] bg-white hover:bg-gray-200 cursor-pointer">Fale conosco</Button>
         </Link>
       </section>

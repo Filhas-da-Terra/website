@@ -11,13 +11,14 @@ import {
   DialogTitle
 } from '@/components/ui/dialog';
 import { HandHeart, Menu } from 'lucide-react';
+import ThemeSwitcher from './theme-switcher';
 
 export default function Header() {
   const [openPix, setOpenPix] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <header className="bg-transparent text-white shadow-md">
+    <header className="bg-transparent shadow-xl shadow-gray-300 dark:shadow-gray-900">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
@@ -25,12 +26,12 @@ export default function Header() {
         </Link>
 
         {/* Navegação desktop */}
-        <nav className="hidden md:flex items-center space-x-6 text-black">
+        <nav className="hidden md:flex items-center space-x-6 text-black dark:text-white">
           <Link href="/" className="hover:underline">Início</Link>
           <Link href="/about" className="hover:underline">Quem Somos</Link>
           <Link href="/projects" className="hover:underline">Projetos</Link>
           <Link href="/contact" className="hover:underline">Contato</Link>
-
+          <ThemeSwitcher />
           <Dialog open={openPix} onOpenChange={setOpenPix}>
             <DialogTrigger asChild>
               <Button
@@ -41,14 +42,14 @@ export default function Header() {
                 Apoie
               </Button>
             </DialogTrigger>
-            <DialogContent className="bg-white text-black max-w-sm text-center">
+            <DialogContent className="bg-white dark:bg-black text-black dark:text-white max-w-sm text-center">
               <DialogTitle className="text-lg font-semibold mb-4">Apoie com Pix</DialogTitle>
               <Image
                 src="/qrcode.jpg"
                 alt="QR Code para doação"
                 width={250}
                 height={250}
-                className="mx-auto"
+                className="mx-auto rounded"
               />
               <p className="text-sm mt-2">Escaneie o QR Code para apoiar o Instituto.</p>
             </DialogContent>

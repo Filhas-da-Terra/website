@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import BackToTop from "./components/backToTop";
+import { ThemeProvider } from "./providers/theme-provider";
 
 
 const urbanist = Urbanist({
@@ -22,14 +23,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${urbanist.className} antialiased`}
-      >
-        <Header />
-        {children}
-        <BackToTop />
-        <Footer />
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body className={`${urbanist.className} antialiased flex flex-col min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange>
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <BackToTop />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

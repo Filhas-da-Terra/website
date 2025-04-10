@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -23,14 +23,11 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-2">Redes Sociais</h4>
           <div className="flex space-x-4 mt-2">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com" title="Instagram" target="_blank" rel="noopener noreferrer">
               <Instagram className="h-5 w-5 hover:text-[#fefae0]" />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://facebook.com" title="Facebook" target="_blank" rel="noopener noreferrer">
               <Facebook className="h-5 w-5 hover:text-[#fefae0]" />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <Twitter className="h-5 w-5 hover:text-[#fefae0]" />
             </a>
           </div>
         </div>
