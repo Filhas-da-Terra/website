@@ -1,6 +1,6 @@
-import { Instagram, Facebook } from 'lucide-react';
 import Image from 'next/image';
-
+import Link from 'next/link';
+import { IconBrandFacebook, IconBrandInstagram, IconBrandTiktok, IconBrandX, IconBrandYoutube } from "@tabler/icons-react"
 export default function Footer() {
   return (
     <footer className="bg-[#4c1d95] text-white">
@@ -23,12 +23,21 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold mb-2">Redes Sociais</h4>
           <div className="flex space-x-4 mt-2">
-            <a href="https://instagram.com" title="Instagram" target="_blank" rel="noopener noreferrer">
-              <Instagram className="h-5 w-5 hover:text-[#fefae0]" />
-            </a>
-            <a href="https://facebook.com" title="Facebook" target="_blank" rel="noopener noreferrer">
-              <Facebook className="h-5 w-5 hover:text-[#fefae0]" />
-            </a>
+            <Link href="https://www.instagram.com/institutofilhasdaterra/" title="Instagram" target="_blank" rel="noopener noreferrer">
+             <IconBrandInstagram className="w-6 h-6" /> 
+            </Link>
+            <Link href="https://facebook.com/coletivafilhasdaterra" title="Facebook" target="_blank" rel="noopener noreferrer">
+              <IconBrandFacebook className="w-6 h-6" />
+            </Link>
+            <Link href="https://x.com/FilhasTerra" title="x" target="_blank" rel="noopener noreferrer">
+           <IconBrandX className="w-6 h-6" />
+           </Link>
+            <Link href="https://www.youtube.com/channel/UC56htIaWgV4HF3rTYSsMSzQ" title="Youtube" target="_blank" rel="noopener noreferrer">
+              <IconBrandYoutube className="w-6 h-6" />
+            </Link>
+            <Link href="https://www.tiktok.com/@filhasdaterra?" title="Tiktok" target="_blank" rel="noopener noreferrer">
+              <IconBrandTiktok className="w-6 h-6" />
+            </Link>
           </div>
         </div>
       </div>

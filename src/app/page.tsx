@@ -8,14 +8,14 @@ import CarouselComponent from "./components/carousel"
 import { useTheme } from 'next-themes';
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   const logoSrc = theme === 'light' ? '/logoPreta.png' : '/logobranca1.png';
   return (
     <main className="bg-[#F2F2F2] dark:bg-black text-[#111827] dark:text-white">
       {/* HERO */}
       <section className="relative w-full h-[80vh] flex items-center justify-center bg-black">
         <Image
-          src="/hero.png"
+          src="/hero.jpg"
           alt="Instituto Filhas da Terra"
           fill
           style={{ objectFit: "cover" }}

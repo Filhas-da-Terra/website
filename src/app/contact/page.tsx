@@ -1,6 +1,7 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { Facebook, Instagram } from 'lucide-react';
+import Link from 'next/link';
+import { IconBrandFacebook, IconBrandInstagram } from '@tabler/icons-react';
 
 type FormData = {
     nome: string;
@@ -52,12 +53,12 @@ export default function Contato() {
 
             <div className="flex flex-col items-center space-y-4">
                 <h2 className="text-xl font-bold">Siga-nos</h2>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 text-2xl">
-                    <Facebook />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-pink-600 text-2xl">
-                    <Instagram />
-                </a>
+                <Link href="https://facebook.com/coletivafilhasdaterra" target="_blank" rel="noopener noreferrer" className="text-blue-600 text-2xl">
+                    <IconBrandFacebook />
+                </Link>
+                <Link href="https://www.instagram.com/institutofilhasdaterra/" target="_blank" rel="noopener noreferrer" className="text-pink-600 text-2xl">
+                    <IconBrandInstagram />
+                </Link>
             </div>
         </div>
     );
