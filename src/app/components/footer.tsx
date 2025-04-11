@@ -30,8 +30,8 @@ export default function Footer() {
         </div>
         <div>
           <h4 className='text-lg font-semibold mb-2'>Contato</h4>
-          <p>Email: contato@filhasdaterra.org</p>
-          <p>Ceilândia, DF</p>
+          <p>Email: institutofilhasdaterra@gmail.com</p>
+          <p>QNR 05 CONJUNTO N - CEILÂNDIA NORTE</p>
         </div>
         <div>
           <h4 className='text-lg font-semibold mb-2'>Redes Sociais</h4>
