@@ -30,7 +30,7 @@ export default function Home() {
             Atuamos em Ceilândia e Sol Nascente por meio de ações culturais,
             educativas e comunitárias
           </p>
-          <Link href='/about'>
+          <Link href='/sobre'>
             <Button className='mt-6 text-base cursor-pointer'>
               Conheça mais
             </Button>
