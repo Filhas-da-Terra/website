@@ -5,7 +5,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import BackToTop from './components/backToTop'
 import { ThemeProvider } from './providers/theme-provider'
-
+import { Analytics } from "@vercel/analytics/react"
 const urbanist = Urbanist({
   variable: '--font-geist-mono',
   subsets: ['latin'],
@@ -33,7 +33,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className='flex-grow'>{children}</main>
+          <main className='flex-grow'>
+            {children}
+            <Analytics />
+          </main>
           <BackToTop />
           <Footer />
         </ThemeProvider>
