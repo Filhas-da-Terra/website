@@ -72,7 +72,8 @@ export default function Header() {
         </nav>
 
         {/* Menu Mobile */}
-        <div className='md:hidden'>
+        <div className='md:hidden flex items-center space-x-4'>
+          <ThemeSwitcher />
           <Dialog open={openMenu} onOpenChange={setOpenMenu}>
             <DialogTrigger asChild>
               <Button variant='ghost' size='icon'>
@@ -108,8 +109,6 @@ export default function Header() {
             </DialogContent>
           </Dialog>
         </div>
-
-
       </div>
     </header>
   )
