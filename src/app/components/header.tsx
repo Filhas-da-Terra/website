@@ -30,14 +30,17 @@ export default function Header() {
           <Link href='/' className='hover:underline'>
             Início
           </Link>
-          <Link href='/about' className='hover:underline'>
+          <Link href='/sobre' className='hover:underline'>
             Quem Somos
           </Link>
-          <Link href='/projects' className='hover:underline'>
+          <Link href='/projetos' className='hover:underline'>
             Projetos
           </Link>
-          <Link href='/contact' className='hover:underline'>
+          <Link href='/contatos' className='hover:underline'>
             Contato
+          </Link>
+          <Link href='/transparencia' onClick={() => setOpenMenu(false)}>
+            Transparencia
           </Link>
           <ThemeSwitcher />
           <Dialog open={openPix} onOpenChange={setOpenPix}>
@@ -84,14 +87,17 @@ export default function Header() {
                 <Link href='/' onClick={() => setOpenMenu(false)}>
                   Início
                 </Link>
-                <Link href='/about' onClick={() => setOpenMenu(false)}>
+                <Link href='/sobre' onClick={() => setOpenMenu(false)}>
                   Quem Somos
                 </Link>
-                <Link href='/projects' onClick={() => setOpenMenu(false)}>
+                <Link href='/projetos' onClick={() => setOpenMenu(false)}>
                   Projetos
                 </Link>
-                <Link href='/contact' onClick={() => setOpenMenu(false)}>
+                <Link href='/contatos' onClick={() => setOpenMenu(false)}>
                   Contato
+                </Link>
+                <Link href='/transparencia' onClick={() => setOpenMenu(false)}>
+                  Transparencia
                 </Link>
 
                 <Dialog open={openPix} onOpenChange={setOpenPix}>

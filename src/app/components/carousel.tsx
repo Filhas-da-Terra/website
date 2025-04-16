@@ -9,21 +9,7 @@ import {
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 
-const Imagens = [
-  '/foto1.jpg',
-  '/foto2.jpg',
-  '/foto3.jpg',
-  '/foto4.jpg',
-  '/foto5.jpg',
-  '/foto6.jpg',
-  '/foto7.jpg',
-  '/foto8.jpg',
-  '/foto9.jpg',
-  '/foto10.jpg',
-  '/foto11.jpg',
-  '/foto12.jpg',
-  '/foto13.jpg',
-]
+const Imagens = Array.from({ length: 29 }, (_, i) => `/foto${i + 1}.jpg`)
 
 export default function CarouselComponent() {
   return (
@@ -45,7 +31,6 @@ export default function CarouselComponent() {
               <div className='p-1'>
                 <div className='relative w-full h-[300px]'>
                   {' '}
-                  {/* Tamanho fixo aqui */}
                   <Image
                     src={src}
                     alt={`Imagem ${index + 1}`}
