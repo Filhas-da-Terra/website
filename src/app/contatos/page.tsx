@@ -24,7 +24,7 @@ export default function Contato() {
         </p>
       </div>
 
-      <div className='space-y-4 flex flex-col items-center justify-center'>
+      <div className='space-y-4 flex flex-col items-center justify-center mb-16'>
         <h2 className='text-xl font-bold'>Siga-nos</h2>
         <div className='flex space-x-4'>
           <Link

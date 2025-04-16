@@ -31,7 +31,7 @@ export default function Footer() {
         <div>
           <h4 className='text-lg font-semibold mb-2'>Contato</h4>
           <p>Email: institutofilhasdaterra@gmail.com</p>
-          <p>QNR 05 CONJUNTO N - CEILÂNDIA NORTE</p>
+          <p>Parque da Lagoinha CH 16, Trecho 3 do Sol Nascente</p>
         </div>
         <div>
           <h4 className='text-lg font-semibold mb-2'>Redes Sociais</h4>
