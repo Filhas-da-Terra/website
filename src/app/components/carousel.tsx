@@ -30,7 +30,6 @@ export default function CarouselComponent() {
             >
               <div className='p-1'>
                 <div className='relative w-full h-[300px]'>
-                  {' '}
                   <Image
                     src={src}
                     alt={`Imagem ${index + 1}`}
@@ -42,8 +41,8 @@ export default function CarouselComponent() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className='hidden sm:flex' />
+        <CarouselNext className='hidden sm:flex' />
       </Carousel>
     </section>
   )
