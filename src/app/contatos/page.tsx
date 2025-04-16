@@ -1,6 +1,12 @@
 'use client'
 import Link from 'next/link'
-import { IconBrandFacebook, IconBrandInstagram, IconBrandTiktok, IconBrandX, IconBrandYoutube } from '@tabler/icons-react'
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandTiktok,
+  IconBrandX,
+  IconBrandYoutube,
+} from '@tabler/icons-react'
 
 export default function Contato() {
   return (

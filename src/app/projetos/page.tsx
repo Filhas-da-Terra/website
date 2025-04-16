@@ -19,8 +19,7 @@ const projetos = [
   },
   {
     titulo: 'Mediação Jogo do Rio Melchior',
-    descricao:
-      'Projeto de despoluição do rio Melchior.',
+    descricao: 'Projeto de despoluição do rio Melchior.',
     imagem: '/jogo.jpeg',
   },
   {
@@ -28,13 +27,12 @@ const projetos = [
     descricao:
       'Intervenção artística em parceria com o  Centro Universitário de Brasília.',
     imagem: '/intervencao.jpeg',
-    },
-    {
+  },
+  {
     titulo: 'Evento socioambiental ocupa lagoinha',
-    descricao:
-      'Evento socioambiental.',
+    descricao: 'Evento socioambiental.',
     imagem: '/evento.jpeg',
-    }
+  },
 ]
 
 export default function ProjetosPage() {
