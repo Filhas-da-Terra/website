@@ -76,13 +76,11 @@ export default function Header() {
           <Dialog open={openMenu} onOpenChange={setOpenMenu}>
             <DialogTrigger asChild>
               <Button variant='ghost' size='icon'>
-                <Menu className='w-6 h-6 text-white' />
+                <Menu className='w-6 h-6 text-black dark:text-white' />
               </Button>
             </DialogTrigger>
-            <DialogContent className='bg-white text-black max-w-xs'>
-              <DialogTitle className='text-lg font-semibold mb-4'>
-                Apoie com Pix
-              </DialogTitle>
+            <DialogContent className='bg-white dark:bg-black text-black dark:text-white max-w-xs'>
+              <DialogTitle className='sr-only'>Menu</DialogTitle>
               <div className='flex flex-col gap-4 text-lg'>
                 <Link href='/' onClick={() => setOpenMenu(false)}>
                   Início
@@ -99,34 +97,19 @@ export default function Header() {
                 <Link href='/transparencia' onClick={() => setOpenMenu(false)}>
                   Transparencia
                 </Link>
-
-                <Dialog open={openPix} onOpenChange={setOpenPix}>
-                  <DialogTrigger asChild>
-                    <Button className='bg-[#92400e] text-white hover:bg-[#78350f] w-full flex items-center gap-2'>
-                      <HandHeart className='w-4 h-4' />
-                      Apoie
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className='bg-white text-black max-w-sm text-center'>
-                    <DialogTitle className='text-lg font-semibold mb-4'>
-                      Apoie com Pix{' '}
-                    </DialogTitle>
-                    <Image
-                      src='/qrcode.jpg'
-                      alt='QR Code para doação'
-                      width={250}
-                      height={250}
-                      className='mx-auto'
-                    />
-                    <p className='text-sm mt-2'>
-                      Escaneie o QR Code para apoiar o Instituto.
-                    </p>
-                  </DialogContent>
-                </Dialog>
+                <Button
+                  className='bg-[#92400e] text-white hover:bg-[#78350f] w-full flex items-center gap-2'
+                  onClick={() => setOpenPix(true)}
+                >
+                  <HandHeart className='w-4 h-4' />
+                  Apoie
+                </Button>
               </div>
             </DialogContent>
           </Dialog>
         </div>
+
+
       </div>
     </header>
   )
