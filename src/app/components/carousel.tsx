@@ -9,7 +9,11 @@ import {
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 
-const Imagens = Array.from({ length: 29 }, (_, i) => `/foto${i + 1}.jpg`)
+const Imagens = Array.from(
+  { length: 29 },
+  (_, i) =>
+    `https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/foto${i + 1}.jpg`,
+)
 
 export default function CarouselComponent() {
   return (

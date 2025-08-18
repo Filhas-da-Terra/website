@@ -9,13 +9,16 @@ import { useTheme } from 'next-themes'
 
 export default function Home() {
   const { theme } = useTheme()
-  const logoSrc = theme === 'light' ? '/logoPreta.png' : '/logobranca1.png'
+  const logoSrc =
+    theme === 'light'
+      ? 'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/logoPreta.png'
+      : 'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/logobranca1.png'
   return (
     <main className='bg-[#F2F2F2] dark:bg-black text-[#111827] dark:text-white'>
       {/* HERO */}
       <section className='relative w-full h-[80vh] flex items-center justify-center bg-black'>
         <Image
-          src='/hero.jpg'
+          src='https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/hero.jpg'
           alt='Instituto Filhas da Terra'
           fill
           style={{ objectFit: 'cover' }}

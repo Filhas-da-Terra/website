@@ -9,29 +9,34 @@ const projetos = [
     titulo: 'Programa Periferia Sem Risco',
     descricao:
       'Projeto nacional em parceria com a Secretaria Nacional de Periferias, UnB, Fiocruz e movimentos sociais para mitigar riscos nas periferias urbanas.',
-    imagem: '/periferia.jpg',
+    imagem:
+      'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/periferia.jpg',
   },
   {
     titulo: 'Hortas Comunitárias',
     descricao:
       'Em parceria com Mulheres do Sol, Floresta da Nasaré, UnB, UFRN, EMATER e o Ministério do Desenvolvimento Agrário e Agricultura Familiar.',
-    imagem: '/horta.jpg',
+    imagem:
+      'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/horta.jpg',
   },
   {
     titulo: 'Mediação Jogo do Rio Melchior',
     descricao: 'Projeto de despoluição do rio Melchior.',
-    imagem: '/jogo.jpeg',
+    imagem:
+      'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/jogo.jpeg',
   },
   {
     titulo: 'Intervenção artística " território em transito: sonho de morar"',
     descricao:
       'Intervenção artística em parceria com o  Centro Universitário de Brasília.',
-    imagem: '/intervencao.jpeg',
+    imagem:
+      'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/intervencao.jpeg',
   },
   {
     titulo: 'Evento socioambiental ocupa lagoinha',
     descricao: 'Evento socioambiental.',
-    imagem: '/evento.jpeg',
+    imagem:
+      'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/evento.jpeg',
   },
 ]
 

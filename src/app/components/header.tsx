@@ -22,7 +22,12 @@ export default function Header() {
       <div className='container mx-auto px-4 py-4 flex justify-between items-center'>
         {/* Logo */}
         <Link href='/' className='flex items-center space-x-2'>
-          <Image src='/logoColorida.png' alt='Logo' width={50} height={50} />
+          <Image
+            src='https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/logoColorida.png'
+            alt='Logo'
+            width={50}
+            height={50}
+          />
         </Link>
 
         {/* Navegação desktop */}
@@ -58,7 +63,7 @@ export default function Header() {
                 Apoie com Pix
               </DialogTitle>
               <Image
-                src='/qrcode.jpg'
+                src='https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/qrcode.jpg'
                 alt='QR Code para doação'
                 width={250}
                 height={250}

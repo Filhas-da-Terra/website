@@ -14,7 +14,7 @@ export default function Footer() {
         <div>
           <div className='flex items-center mb-2'>
             <Image
-              src='/logoBranca.png'
+              src='https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/logoBranca.png'
               alt='Logo'
               width={50}
               height={50}

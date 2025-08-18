@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className='page-container'>
-      <main className="bg-[url('/ondas.png')] bg-cover bg-no-repeat bg-center ">
+      <main className="bg-[url('https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/ondas.png')] bg-cover bg-no-repeat bg-center ">
         <div className='container mx-auto p-4'>
           <section className='my-12 animate-fade-down animate-duration-1000'>
             <h2 className='text-3xl font-bold text-slate-800'>Quem Somos</h2>
