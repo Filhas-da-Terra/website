@@ -52,7 +52,7 @@ export default function Header() {
             <DialogTrigger asChild>
               <Button
                 variant='secondary'
-                className='bg-[#92400e] text-white hover:bg-[#78350f] flex items-center gap-2'
+                className='bg-[#92400e] text-white hover:bg-[#78350f] flex items-center gap-2 cursor-pointer'
               >
                 <HandHeart className='w-4 h-4' />
                 Apoie

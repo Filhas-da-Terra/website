@@ -17,7 +17,7 @@ const ThemeSwitcher = () => {
     <div>
       <button
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        className='p-2'
+        className='p-2 cursor-pointer'
       >
         {theme === 'light' ? (
           <span role='img' aria-label='Switch to dark mode'>
