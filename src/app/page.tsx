@@ -139,7 +139,7 @@ export default function Home() {
           Participe de nossas ações ou entre em contato com a equipe do
           Instituto.
         </p>
-        <Link href='/contact'>
+        <Link href='/contatos'>
           <Button
             variant='secondary'
             className='text-[#2E4D3D] bg-white hover:bg-gray-200 cursor-pointer'
