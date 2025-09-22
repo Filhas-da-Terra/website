@@ -4,11 +4,31 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Lightbulb, HeartHandshake, Leaf, Users, Computer } from 'lucide-react'
-import CarouselComponent from './components/carousel'
 import { useTheme } from 'next-themes'
+import CarouselComponent from '@/components/ui/carouselComponent'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
   const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const [images, setImages] = useState<{ name: string; url: string }[]>([])
+
+  useEffect(() => {
+    setMounted(true)
+    const fetchImages = async () => {
+      try {
+        const res = await fetch('/api/carousel')
+        if (res.ok) {
+          const data = await res.json()
+          setImages(data)
+        }
+      } catch (error) {
+        console.error('Failed to fetch images:', error)
+      }
+    }
+    fetchImages()
+  }, [])
+
   const logoSrc =
     theme === 'light'
       ? 'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/logoPreta.png'
@@ -77,7 +97,7 @@ export default function Home() {
         </div>
       </section>
 
-      <CarouselComponent />
+      <CarouselComponent images={images} />
 
       {/* ÁREAS DE ATUAÇÃO */}
       <section className='py-16 px-6 bg-white dark:bg-black'>
@@ -120,16 +140,18 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className='relative w-full mb-6 h-[80vh] flex items-center justify-center bg-white dark:bg-black'>
-        <Image
-          src={logoSrc}
-          alt='Instituto Filhas da Terra'
-          style={{ objectFit: 'cover' }}
-          priority
-          width={350}
-          height={350}
-        />
-      </section>
+      {mounted && (
+        <section className='relative w-full mb-6 h-[80vh] flex items-center justify-center bg-white dark:bg-black'>
+          <Image
+            src={logoSrc}
+            alt='Instituto Filhas da Terra'
+            style={{ objectFit: 'cover' }}
+            priority
+            width={350}
+            height={350}
+          />
+        </section>
+      )}
       {/* CTA */}
       <section className='py-16 px-6 bg-[#2E4D3D] text-white text-center'>
         <h2 className='text-3xl font-bold mb-4'>

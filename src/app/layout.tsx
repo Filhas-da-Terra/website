@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Urbanist } from 'next/font/google'
 import './globals.css'
-import Header from './components/header'
-import Footer from './components/footer'
-import BackToTop from './components/backToTop'
 import { ThemeProvider } from './providers/theme-provider'
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
+import Header from '@/components/ui/header'
+import BackToTop from '@/components/ui/backToTop'
+import Footer from '@/components/ui/footer'
 const urbanist = Urbanist({
   variable: '--font-geist-mono',
   subsets: ['latin'],

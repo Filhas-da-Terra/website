@@ -9,13 +9,24 @@ import {
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 
-const Imagens = Array.from(
-  { length: 29 },
-  (_, i) =>
-    `https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/foto${i + 1}.jpg`,
-)
+interface CarouselImage {
+  url: string
+  name: string
+}
 
-export default function CarouselComponent() {
+interface CarouselComponentProps {
+  images: CarouselImage[]
+}
+
+export default function CarouselComponent({ images }: CarouselComponentProps) {
+  if (!images || images.length === 0) {
+    return (
+      <section className='py-16 px-6 max-w-6xl mx-auto'>
+        <p className='text-center'>Carregando imagens...</p>
+      </section>
+    )
+  }
+
   return (
     <section className='py-16 px-6 max-w-6xl mx-auto'>
       <Carousel
@@ -27,7 +38,7 @@ export default function CarouselComponent() {
         className='w-full'
       >
         <CarouselContent>
-          {Imagens.map((src, index) => (
+          {images.map((image, index) => (
             <CarouselItem
               key={index}
               className='basis-full md:basis-1/2 lg:basis-1/3'
@@ -35,8 +46,8 @@ export default function CarouselComponent() {
               <div className='p-1'>
                 <div className='relative w-full h-[300px]'>
                   <Image
-                    src={src}
-                    alt={`Imagem ${index + 1}`}
+                    src={image.url}
+                    alt={image.name}
                     fill
                     className='rounded-lg object-cover'
                   />

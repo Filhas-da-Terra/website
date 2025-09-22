@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+### Environment Variables
+
+Create a `.env.local` in the project root with:
+
+```
+SUPABASE_URL=https://YOUR-PROJECT.supabase.co
+SUPABASE_ANON_KEY=ey...
+# Only for server-side admin actions (upload/delete). Keep this secret.
+SUPABASE_SERVICE_ROLE=ey...
+```
+
+Storage bucket expected: `filhasDaTerra` with images named `foto1.jpg`, `foto2.jpg`, ...
+
+### Admin Dashboard
+
+- Access `/admin` para gerenciar imagens do carousel (listar, enviar, deletar).
+- Requer `SUPABASE_SERVICE_ROLE` configurado para permitir upload/delete.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
