@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
+import { supabase } from '@/lib/supabaseClient'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -34,6 +35,8 @@ export default function ProjectsAdminPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingProject, setEditingProject] = useState<Project | null>(null)
   const [formData, setFormData] = useState(initialFormData)
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const fetchProjects = async () => {
     try {
@@ -63,6 +66,7 @@ export default function ProjectsAdminPage() {
   const handleOpenDialog = (project: Project | null) => {
     setEditingProject(project)
     setFormData(project ? { ...project } : initialFormData)
+    setSelectedFile(null)
     setIsDialogOpen(true)
   }
 
@@ -70,16 +74,43 @@ export default function ProjectsAdminPage() {
     setIsDialogOpen(false)
     setEditingProject(null)
     setFormData(initialFormData)
+    setSelectedFile(null)
   }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
     const method = editingProject ? 'PUT' : 'POST'
-    const body = JSON.stringify(
-      editingProject ? { id: editingProject.id, ...formData } : formData,
-    )
+    const payload = { ...formData }
 
     try {
+      if (selectedFile) {
+        const safeName = selectedFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '_')
+        const filePath = `projects/${Date.now()}-${safeName}`
+
+        const { error: uploadError } = await supabase.storage
+          .from('filhasDaTerra')
+          .upload(filePath, selectedFile, {
+            cacheControl: '3600',
+            upsert: false,
+            contentType: selectedFile.type,
+          })
+
+        if (uploadError) {
+          throw new Error(`Falha no upload da imagem: ${uploadError.message}`)
+        }
+
+        const { data: publicData } = supabase.storage
+          .from('filhasDaTerra')
+          .getPublicUrl(filePath)
+
+        payload.imageUrl = publicData.publicUrl
+      }
+
+      const body = JSON.stringify(
+        editingProject ? { id: editingProject.id, ...payload } : payload,
+      )
+
       const response = await fetch('/api/projetos', {
         method,
         headers: { 'Content-Type': 'application/json' },
@@ -98,6 +129,8 @@ export default function ProjectsAdminPage() {
       handleCloseDialog()
     } catch (err) {
       alert(err instanceof Error ? err.message : 'An unknown error occurred')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -164,16 +197,24 @@ export default function ProjectsAdminPage() {
               />
             </div>
             <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='imageUrl' className='text-right'>
-                URL da Imagem
+              <label htmlFor='image' className='text-right'>
+                Imagem
               </label>
-              <input
-                id='imageUrl'
-                name='imageUrl'
-                value={formData.imageUrl || ''}
-                onChange={handleFormChange}
-                className='col-span-3 p-2 border rounded-md bg-transparent'
-              />
+              <div className='col-span-3 space-y-2'>
+                {editingProject?.imageUrl && !selectedFile && (
+                  <div className='text-sm text-gray-500'>
+                    Imagem atual mantida. Selecione um arquivo para substituir.
+                  </div>
+                )}
+                <input
+                  id='image'
+                  name='image'
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
+                  className='w-full text-sm bg-zinc-500 p-2 rounded-md'
+                />
+              </div>
             </div>
             <div className='grid grid-cols-4 items-center gap-4'>
               <label htmlFor='projectUrl' className='text-right'>
@@ -193,7 +234,9 @@ export default function ProjectsAdminPage() {
                   Cancelar
                 </Button>
               </DialogClose>
-              <Button type='submit'>Salvar</Button>
+              <Button type='submit' disabled={isSubmitting}>
+                {isSubmitting ? 'Salvando...' : 'Salvar'}
+              </Button>
             </DialogFooter>
           </form>
         </DialogContent>
