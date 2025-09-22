@@ -94,7 +94,7 @@ export default function ProjectsAdminPage() {
         )
       }
 
-      await fetchProjects() 
+      await fetchProjects()
       handleCloseDialog()
     } catch (err) {
       alert(err instanceof Error ? err.message : 'An unknown error occurred')
