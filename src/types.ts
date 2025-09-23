@@ -11,7 +11,7 @@ export interface CarouselImage {
   url: string
 }
 
-export interface Notice {
+export interface Alert {
   id: number
   title: string
   message: string
@@ -24,7 +24,7 @@ export interface Notice {
   linkLabel?: string | null
 }
 
-export type NoticePayload = {
+export type AlertPayload = {
   title: string
   message: string
   active: boolean
@@ -36,7 +36,7 @@ export type NoticePayload = {
   linkLabel?: string
 }
 
-export type PublicNotice = {
+export type PublicAlert = {
   title: string
   message: string
   imageUrl?: string | null

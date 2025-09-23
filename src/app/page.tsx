@@ -13,14 +13,14 @@ import { Lightbulb, HeartHandshake, Leaf, Users, Computer } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import CarouselComponent from '@/components/ui/carouselComponent'
 import { useEffect, useState } from 'react'
-import type { CarouselImage, PublicNotice } from '@/types'
+import type { CarouselImage, PublicAlert } from '@/types'
 
 export default function Home() {
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [images, setImages] = useState<CarouselImage[]>([])
-  const [notice, setNotice] = useState<PublicNotice | null>(null)
-  const [showNotice, setShowNotice] = useState(false)
+  const [alert, setAlert] = useState<PublicAlert | null>(null)
+  const [showAlert, setShowAlert] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -35,13 +35,13 @@ export default function Home() {
         console.error('Failed to fetch images:', error)
       }
     }
-    const fetchNotice = async () => {
+    const fetchAlert = async () => {
       try {
-        const res = await fetch('/api/avisos/active', { cache: 'no-store' })
+        const res = await fetch('/api/alerts/active', { cache: 'no-store' })
         if (res.ok) {
           const data = await res.json()
           if (data) {
-            setNotice({
+            setAlert({
               title: data.title,
               message: data.message,
               imageUrl: data.imageUrl,
@@ -49,15 +49,15 @@ export default function Home() {
               linkUrl: data.linkUrl,
               linkLabel: data.linkLabel,
             })
-            setShowNotice(true)
+            setShowAlert(true)
           }
         }
       } catch (error) {
-        console.error('Failed to fetch notice:', error)
+        console.error('Failed to fetch alert:', error)
       }
     }
     fetchImages()
-    fetchNotice()
+    fetchAlert()
   }, [])
 
   const logoSrc =
@@ -202,36 +202,36 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Notice Popup */}
-      <Dialog open={showNotice} onOpenChange={setShowNotice}>
+      {/* Alert Popup */}
+      <Dialog open={showAlert} onOpenChange={setShowAlert}>
         <DialogContent className='sm:max-w-[480px]'>
           <DialogHeader>
-            <DialogTitle>{notice?.title || 'Aviso'}</DialogTitle>
+            <DialogTitle>{alert?.title || 'Aviso'}</DialogTitle>
           </DialogHeader>
           <div className='space-y-3'>
-            {notice?.imageUrl && (
+            {alert?.imageUrl && (
               <Image
-                src={notice.imageUrl}
-                alt={notice.title}
+                src={alert.imageUrl}
+                alt={alert.title}
                 className='w-full rounded-md'
                 width={800}
                 height={450}
               />
             )}
-            {notice?.videoUrl && (
+            {alert?.videoUrl && (
               <video controls className='w-full rounded-md'>
-                <source src={notice.videoUrl} />
+                <source src={alert.videoUrl} />
               </video>
             )}
-            <div className='whitespace-pre-wrap'>{notice?.message}</div>
-            {notice?.linkUrl && (
+            <div className='whitespace-pre-wrap'>{alert?.message}</div>
+            {alert?.linkUrl && (
               <a
-                href={notice.linkUrl}
+                href={alert.linkUrl}
                 target='_blank'
                 rel='noopener noreferrer'
                 className='inline-flex items-center text-blue-600 underline'
               >
-                {notice.linkLabel || 'Saiba mais'}
+                {alert.linkLabel || 'Saiba mais'}
               </a>
             )}
           </div>

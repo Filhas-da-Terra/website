@@ -18,17 +18,17 @@ model Project {
   updatedAt   DateTime @updatedAt
 }
 
-model Notice {
-  id        Int      @id @default(autoincrement())
+model Alert {
+  id        Int       @id @default(autoincrement())
   title     String
-  message   String   @db.Text
-  active    Boolean  @default(true)
-  startsAt  DateTime @default(now())
+  message   String    @db.Text
+  active    Boolean   @default(true)
+  startsAt  DateTime  @default(now())
   endsAt    DateTime?
   imageUrl  String?
   videoUrl  String?
   linkUrl   String?
   linkLabel String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }

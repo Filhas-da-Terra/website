@@ -7,7 +7,7 @@ export const revalidate = 0
 export async function GET() {
   try {
     const now = new Date()
-    const notice = await prisma.notice.findFirst({
+    const alert = await prisma.alert.findFirst({
       where: {
         active: true,
         OR: [{ endsAt: null }, { endsAt: { gt: now } }],
@@ -15,11 +15,11 @@ export async function GET() {
       },
       orderBy: { updatedAt: 'desc' },
     })
-    return NextResponse.json(notice)
+    return NextResponse.json(alert)
   } catch (error) {
-    console.error('Erro ao buscar aviso ativo:', error)
+    console.error('Erro ao buscar alerta ativo:', error)
     return NextResponse.json(
-      { error: 'Erro ao buscar aviso ativo.' },
+      { error: 'Erro ao buscar alerta ativo.' },
       { status: 500 },
     )
   }

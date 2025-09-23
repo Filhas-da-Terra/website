@@ -2,7 +2,7 @@
 
 import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
 import { supabase } from '@/lib/supabaseClient'
-import type { Notice as NoticeType, NoticePayload } from '@/types'
+import type { Alert as AlertType, AlertPayload } from '@/types'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -13,9 +13,9 @@ import {
   DialogClose,
 } from '@/components/ui/dialog'
 
-type Notice = NoticeType
+type Alert = AlertType
 
-const initialForm: Omit<Notice, 'id'> = {
+const initialForm: Omit<Alert, 'id'> = {
   title: '',
   message: '',
   active: true,
@@ -27,25 +27,25 @@ const initialForm: Omit<Notice, 'id'> = {
   linkLabel: '',
 }
 
-export default function AvisosAdminPage() {
-  const [notices, setNotices] = useState<Notice[]>([])
+export default function AlertsAdminPage() {
+  const [alerts, setAlerts] = useState<Alert[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [editing, setEditing] = useState<Notice | null>(null)
+  const [editing, setEditing] = useState<Alert | null>(null)
   const [form, setForm] = useState(initialForm)
   const [submitting, setSubmitting] = useState(false)
   const [selectedImage, setSelectedImage] = useState<File | null>(null)
   const [selectedVideo, setSelectedVideo] = useState<File | null>(null)
 
-  const fetchNotices = async () => {
+  const fetchAlerts = async () => {
     try {
       setLoading(true)
-      const res = await fetch('/api/avisos')
-      if (!res.ok) throw new Error('Falha ao carregar avisos')
+      const res = await fetch('/api/alerts')
+      if (!res.ok) throw new Error('Falha ao carregar alertas')
       const data = await res.json()
-      setNotices(data)
+      setAlerts(data)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro desconhecido')
     } finally {
@@ -54,7 +54,7 @@ export default function AvisosAdminPage() {
   }
 
   useEffect(() => {
-    fetchNotices()
+    fetchAlerts()
   }, [])
 
   const onChange = (
@@ -67,20 +67,20 @@ export default function AvisosAdminPage() {
     }))
   }
 
-  const openDialog = (notice: Notice | null) => {
-    setEditing(notice)
+  const openDialog = (alert: Alert | null) => {
+    setEditing(alert)
     setForm(
-      notice
+      alert
         ? {
-            title: notice.title,
-            message: notice.message,
-            active: notice.active,
-            startsAt: notice.startsAt ? notice.startsAt.slice(0, 16) : '',
-            endsAt: notice.endsAt ? notice.endsAt.slice(0, 16) : '',
-            imageUrl: notice.imageUrl || '',
-            videoUrl: notice.videoUrl || '',
-            linkUrl: notice.linkUrl || '',
-            linkLabel: notice.linkLabel || '',
+            title: alert.title,
+            message: alert.message,
+            active: alert.active,
+            startsAt: alert.startsAt ? alert.startsAt.slice(0, 16) : '',
+            endsAt: alert.endsAt ? alert.endsAt.slice(0, 16) : '',
+            imageUrl: alert.imageUrl || '',
+            videoUrl: alert.videoUrl || '',
+            linkUrl: alert.linkUrl || '',
+            linkLabel: alert.linkLabel || '',
           }
         : initialForm,
     )
@@ -97,7 +97,7 @@ export default function AvisosAdminPage() {
     e.preventDefault()
     setSubmitting(true)
     try {
-      const payload: NoticePayload = {
+      const payload: AlertPayload = {
         title: form.title,
         message: form.message,
         active: form.active,
@@ -109,7 +109,7 @@ export default function AvisosAdminPage() {
 
       if (selectedImage) {
         const safeName = selectedImage.name.replace(/[^a-zA-Z0-9.\-_]/g, '_')
-        const filePath = `notices/${Date.now()}-${safeName}`
+        const filePath = `alerts/${Date.now()}-${safeName}`
         const { error: uploadError } = await supabase.storage
           .from('filhasDaTerra')
           .upload(filePath, selectedImage, {
@@ -127,7 +127,7 @@ export default function AvisosAdminPage() {
 
       if (selectedVideo) {
         const safeName = selectedVideo.name.replace(/[^a-zA-Z0-9.\-_]/g, '_')
-        const filePath = `notices/${Date.now()}-${safeName}`
+        const filePath = `alerts/${Date.now()}-${safeName}`
         const { error: uploadError } = await supabase.storage
           .from('filhasDaTerra')
           .upload(filePath, selectedVideo, {
@@ -147,13 +147,13 @@ export default function AvisosAdminPage() {
       const body = JSON.stringify(
         editing ? { id: editing.id, ...payload } : payload,
       )
-      const res = await fetch('/api/avisos', {
+      const res = await fetch('/api/alerts', {
         method,
         headers: { 'Content-Type': 'application/json' },
         body,
       })
-      if (!res.ok) throw new Error('Falha ao salvar aviso')
-      await fetchNotices()
+      if (!res.ok) throw new Error('Falha ao salvar alerta')
+      await fetchAlerts()
       closeDialog()
     } catch (err) {
       alert(err instanceof Error ? err.message : 'Erro ao salvar')
@@ -163,29 +163,29 @@ export default function AvisosAdminPage() {
   }
 
   const onDelete = async (id: number) => {
-    if (!confirm('Tem certeza que deseja deletar este aviso?')) return
+    if (!confirm('Tem certeza que deseja deletar este alerta?')) return
     try {
-      const res = await fetch('/api/avisos', {
+      const res = await fetch('/api/alerts', {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),
       })
-      if (!res.ok) throw new Error('Falha ao deletar aviso')
-      setNotices((prev) => prev.filter((n) => n.id !== id))
+      if (!res.ok) throw new Error('Falha ao deletar alerta')
+      setAlerts((prev) => prev.filter((n) => n.id !== id))
     } catch (err) {
       alert(err instanceof Error ? err.message : 'Erro ao deletar')
     }
   }
 
-  const toggleActive = async (notice: Notice) => {
+  const toggleActive = async (alertItem: Alert) => {
     try {
-      const res = await fetch('/api/avisos', {
+      const res = await fetch('/api/alerts', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: notice.id, active: !notice.active }),
+        body: JSON.stringify({ id: alertItem.id, active: !alertItem.active }),
       })
       if (!res.ok) throw new Error('Falha ao atualizar status')
-      await fetchNotices()
+      await fetchAlerts()
     } catch (err) {
       alert(err instanceof Error ? err.message : 'Erro ao atualizar')
     }
@@ -194,14 +194,16 @@ export default function AvisosAdminPage() {
   return (
     <div className='space-y-8'>
       <div className='flex justify-between items-center'>
-        <h1 className='text-2xl font-semibold'>Gerenciar Avisos</h1>
-        <Button onClick={() => openDialog(null)}>Novo Aviso</Button>
+        <h1 className='text-2xl font-semibold'>Gerenciar Alertas</h1>
+        <Button onClick={() => openDialog(null)}>Novo Alerta</Button>
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className='sm:max-w-[525px]'>
           <DialogHeader>
-            <DialogTitle>{editing ? 'Editar Aviso' : 'Novo Aviso'}</DialogTitle>
+            <DialogTitle>
+              {editing ? 'Editar Alerta' : 'Novo Alerta'}
+            </DialogTitle>
           </DialogHeader>
           <form onSubmit={onSubmit} className='grid gap-4 py-4'>
             <div className='grid grid-cols-4 items-center gap-4'>
@@ -353,12 +355,12 @@ export default function AvisosAdminPage() {
         </DialogContent>
       </Dialog>
 
-      {loading && <p>Carregando avisos...</p>}
+      {loading && <p>Carregando alertas...</p>}
       {error && <p className='text-red-500'>Erro: {error}</p>}
       {!loading && !error && (
         <div className='border rounded-lg'>
           <ul className='divide-y divide-gray-200 dark:divide-gray-800'>
-            {notices.map((n) => (
+            {alerts.map((n) => (
               <li
                 key={n.id}
                 className='p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 hover:bg-gray-50 dark:hover:bg-gray-900/30'
@@ -402,9 +404,9 @@ export default function AvisosAdminPage() {
               </li>
             ))}
           </ul>
-          {notices.length === 0 && (
+          {alerts.length === 0 && (
             <p className='p-4 text-center text-gray-500'>
-              Nenhum aviso encontrado.
+              Nenhum alerta encontrado.
             </p>
           )}
         </div>

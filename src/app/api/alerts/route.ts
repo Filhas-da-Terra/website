@@ -3,14 +3,14 @@ import { prisma } from '@/lib/prisma'
 
 export async function GET() {
   try {
-    const notices = await prisma.notice.findMany({
+    const alerts = await prisma.alert.findMany({
       orderBy: { createdAt: 'desc' },
     })
-    return NextResponse.json(notices)
+    return NextResponse.json(alerts)
   } catch (error) {
-    console.error('Erro ao buscar avisos:', error)
+    console.error('Erro ao buscar alertas:', error)
     return NextResponse.json(
-      { error: 'Erro ao buscar avisos.' },
+      { error: 'Erro ao buscar alertas.' },
       { status: 500 },
     )
   }
@@ -19,11 +19,14 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json()
-    const notice = await prisma.notice.create({ data })
-    return NextResponse.json(notice, { status: 201 })
+    const alert = await prisma.alert.create({ data })
+    return NextResponse.json(alert, { status: 201 })
   } catch (error) {
-    console.error('Erro ao criar aviso:', error)
-    return NextResponse.json({ error: 'Erro ao criar aviso.' }, { status: 500 })
+    console.error('Erro ao criar alerta:', error)
+    return NextResponse.json(
+      { error: 'Erro ao criar alerta.' },
+      { status: 500 },
+    )
   }
 }
 
@@ -32,19 +35,19 @@ export async function PUT(request: NextRequest) {
     const { id, ...data } = await request.json()
     if (!id) {
       return NextResponse.json(
-        { error: 'ID do aviso é obrigatório.' },
+        { error: 'ID do alerta é obrigatório.' },
         { status: 400 },
       )
     }
-    const notice = await prisma.notice.update({
+    const alert = await prisma.alert.update({
       where: { id: Number(id) },
       data,
     })
-    return NextResponse.json(notice)
+    return NextResponse.json(alert)
   } catch (error) {
-    console.error('Erro ao atualizar aviso:', error)
+    console.error('Erro ao atualizar alerta:', error)
     return NextResponse.json(
-      { error: 'Erro ao atualizar aviso.' },
+      { error: 'Erro ao atualizar alerta.' },
       { status: 500 },
     )
   }
@@ -55,16 +58,16 @@ export async function DELETE(request: NextRequest) {
     const { id } = await request.json()
     if (!id) {
       return NextResponse.json(
-        { error: 'ID do aviso é obrigatório.' },
+        { error: 'ID do alerta é obrigatório.' },
         { status: 400 },
       )
     }
-    await prisma.notice.delete({ where: { id: Number(id) } })
-    return NextResponse.json({ message: 'Aviso deletado com sucesso.' })
+    await prisma.alert.delete({ where: { id: Number(id) } })
+    return NextResponse.json({ message: 'Alerta deletado com sucesso.' })
   } catch (error) {
-    console.error('Erro ao deletar aviso:', error)
+    console.error('Erro ao deletar alerta:', error)
     return NextResponse.json(
-      { error: 'Erro ao deletar aviso.' },
+      { error: 'Erro ao deletar alerta.' },
       { status: 500 },
     )
   }
