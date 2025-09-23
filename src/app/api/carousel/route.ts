@@ -9,7 +9,10 @@ export async function GET() {
     .list(undefined, { search: 'foto' })
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Erro ao listar imagens do carousel.' },
+      { status: 500 },
+    )
   }
 
   if (!data) {
@@ -41,7 +44,7 @@ export async function POST(request: NextRequest) {
 
     if (!fileType || !fileType.startsWith('image/')) {
       return NextResponse.json(
-        { error: 'fileType must be an image type (e.g., image/jpeg)' },
+        { error: 'fileType deve ser um tipo de imagem (ex.: image/jpeg)' },
         { status: 400 },
       )
     }
@@ -52,8 +55,10 @@ export async function POST(request: NextRequest) {
       .list(undefined, { search: 'foto' })
 
     if (listError) {
-      console.error('Error listing files:', listError)
-      throw new Error('Could not list files to determine new name.')
+      console.error('Erro ao listar arquivos:', listError)
+      throw new Error(
+        'Não foi possível listar arquivos para determinar o novo nome.',
+      )
     }
 
     let nextNumber = 1
@@ -77,13 +82,13 @@ export async function POST(request: NextRequest) {
       .createSignedUploadUrl(newFileName)
 
     if (signedUrlError) {
-      console.error('Error creating signed URL:', signedUrlError)
-      throw new Error('Could not create signed URL for upload.')
+      console.error('Erro ao criar URL assinada:', signedUrlError)
+      throw new Error('Não foi possível criar URL assinada para upload.')
     }
 
     return NextResponse.json({ ...data, newFileName })
   } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : 'Unknown error'
+    const message = error instanceof Error ? error.message : 'Erro desconhecido'
     return NextResponse.json({ error: message }, { status: 500 })
   }
 }
@@ -94,7 +99,7 @@ export async function DELETE(request: NextRequest) {
 
     if (!name) {
       return NextResponse.json(
-        { error: 'File name is required' },
+        { error: 'Nome do arquivo é obrigatório' },
         { status: 400 },
       )
     }
@@ -104,21 +109,24 @@ export async function DELETE(request: NextRequest) {
       .remove([name])
 
     if (error) {
-      console.error('Supabase storage error:', error)
-      return NextResponse.json({ error: error.message }, { status: 500 })
+      console.error('Erro no storage do Supabase:', error)
+      return NextResponse.json(
+        { error: 'Erro ao deletar arquivo do storage.' },
+        { status: 500 },
+      )
     }
 
     return NextResponse.json({ success: true, data })
   } catch (error: unknown) {
-    console.error('Error processing DELETE request:', error)
+    console.error('Erro ao processar requisição DELETE:', error)
     if (error instanceof SyntaxError) {
       return NextResponse.json(
-        { error: 'Invalid JSON in request body' },
+        { error: 'JSON inválido no corpo da requisição' },
         { status: 400 },
       )
     }
     return NextResponse.json(
-      { error: 'Error processing request' },
+      { error: 'Erro ao processar requisição' },
       { status: 500 },
     )
   }

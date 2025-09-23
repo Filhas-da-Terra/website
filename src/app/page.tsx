@@ -2,16 +2,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
 import { Card, CardContent } from '@/components/ui/card'
 import { Lightbulb, HeartHandshake, Leaf, Users, Computer } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import CarouselComponent from '@/components/ui/carouselComponent'
 import { useEffect, useState } from 'react'
+import type { CarouselImage, PublicNotice } from '@/types'
 
 export default function Home() {
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const [images, setImages] = useState<{ name: string; url: string }[]>([])
+  const [images, setImages] = useState<CarouselImage[]>([])
+  const [notice, setNotice] = useState<PublicNotice | null>(null)
+  const [showNotice, setShowNotice] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -26,7 +35,29 @@ export default function Home() {
         console.error('Failed to fetch images:', error)
       }
     }
+    const fetchNotice = async () => {
+      try {
+        const res = await fetch('/api/avisos/active', { cache: 'no-store' })
+        if (res.ok) {
+          const data = await res.json()
+          if (data) {
+            setNotice({
+              title: data.title,
+              message: data.message,
+              imageUrl: data.imageUrl,
+              videoUrl: data.videoUrl,
+              linkUrl: data.linkUrl,
+              linkLabel: data.linkLabel,
+            })
+            setShowNotice(true)
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch notice:', error)
+      }
+    }
     fetchImages()
+    fetchNotice()
   }, [])
 
   const logoSrc =
@@ -170,6 +201,42 @@ export default function Home() {
           </Button>
         </Link>
       </section>
+
+      {/* Notice Popup */}
+      <Dialog open={showNotice} onOpenChange={setShowNotice}>
+        <DialogContent className='sm:max-w-[480px]'>
+          <DialogHeader>
+            <DialogTitle>{notice?.title || 'Aviso'}</DialogTitle>
+          </DialogHeader>
+          <div className='space-y-3'>
+            {notice?.imageUrl && (
+              <Image
+                src={notice.imageUrl}
+                alt={notice.title}
+                className='w-full rounded-md'
+                width={800}
+                height={450}
+              />
+            )}
+            {notice?.videoUrl && (
+              <video controls className='w-full rounded-md'>
+                <source src={notice.videoUrl} />
+              </video>
+            )}
+            <div className='whitespace-pre-wrap'>{notice?.message}</div>
+            {notice?.linkUrl && (
+              <a
+                href={notice.linkUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center text-blue-600 underline'
+              >
+                {notice.linkLabel || 'Saiba mais'}
+              </a>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </main>
   )
 }

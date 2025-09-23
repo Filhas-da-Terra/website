@@ -3,6 +3,7 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { Button } from '@/components/ui/button'
+import type { Project } from '@/types'
 import {
   Dialog,
   DialogContent,
@@ -11,14 +12,6 @@ import {
   DialogFooter,
   DialogClose,
 } from '@/components/ui/dialog'
-
-interface Project {
-  id: number
-  title: string
-  description: string
-  imageUrl: string | null
-  projectUrl: string | null
-}
 
 const initialFormData: Omit<Project, 'id'> = {
   title: '',

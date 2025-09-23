@@ -2,12 +2,8 @@
 
 import { useState, useEffect, ChangeEvent } from 'react'
 import { Button } from '@/components/ui/button'
+import type { CarouselImage } from '@/types'
 import Image from 'next/image'
-
-interface CarouselImage {
-  name: string
-  url: string
-}
 
 export default function CarouselAdminPage() {
   const [images, setImages] = useState<CarouselImage[]>([])

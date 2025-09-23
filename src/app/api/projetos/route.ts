@@ -12,7 +12,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error fetching projects:', error)
     return NextResponse.json(
-      { error: 'Error fetching projects.' },
+      { error: 'Erro ao buscar projetos.' },
       { status: 500 },
     )
   }
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error creating project:', error)
     return NextResponse.json(
-      { error: 'Error creating project.' },
+      { error: 'Erro ao criar projeto.' },
       { status: 500 },
     )
   }
@@ -37,19 +37,19 @@ export async function DELETE(request: NextRequest) {
     const { id } = await request.json()
     if (!id) {
       return NextResponse.json(
-        { error: 'Project ID is required.' },
+        { error: 'ID do projeto é obrigatório.' },
         { status: 400 },
       )
     }
     await prisma.project.delete({ where: { id: Number(id) } })
     return NextResponse.json(
-      { message: 'Project deleted successfully.' },
+      { message: 'Projeto deletado com sucesso.' },
       { status: 200 },
     )
   } catch (error) {
     console.error('Error deleting project:', error)
     return NextResponse.json(
-      { error: 'Error deleting project.' },
+      { error: 'Erro ao deletar projeto.' },
       { status: 500 },
     )
   }
@@ -60,7 +60,7 @@ export async function PUT(request: NextRequest) {
     const { id, ...data } = await request.json()
     if (!id) {
       return NextResponse.json(
-        { error: 'Project ID is required.' },
+        { error: 'ID do projeto é obrigatório.' },
         { status: 400 },
       )
     }
@@ -72,7 +72,7 @@ export async function PUT(request: NextRequest) {
   } catch (error) {
     console.error('Error updating project:', error)
     return NextResponse.json(
-      { error: 'Error updating project.' },
+      { error: 'Erro ao atualizar projeto.' },
       { status: 500 },
     )
   }
