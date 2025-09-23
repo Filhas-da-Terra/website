@@ -3,10 +3,10 @@ import { ReactNode } from 'react'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
-    <div className='flex min-h-screen bg-white dark:bg-black'>
-      <aside className='w-64 bg-gray-50 dark:bg-gray-900/30 p-6 border-r border-gray-200 dark:border-gray-800'>
+    <div className='flex flex-col md:flex-row min-h-screen bg-white dark:bg-black'>
+      <aside className='w-full md:w-64 bg-gray-50 dark:bg-gray-900/30 p-6 border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-800'>
         <h2 className='text-xl font-semibold mb-6'>Admin</h2>
-        <nav className='space-y-2'>
+        <nav className='flex flex-row flex-wrap gap-2 md:flex-col md:space-y-2 md:gap-0'>
           <Link href='/admin/carousel'>
             <span className='flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer'>
               Carousel

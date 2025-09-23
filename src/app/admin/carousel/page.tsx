@@ -148,9 +148,9 @@ export default function CarouselAdminPage() {
                       className='object-cover'
                     />
                   </div>
-                  <div className='p-3 flex items-center justify-between gap-3'>
+                  <div className='p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2'>
                     <div
-                      className='truncate text-sm font-medium'
+                      className='truncate text-sm font-medium w-full sm:w-auto'
                       title={img.name}
                     >
                       {img.name}
@@ -159,6 +159,7 @@ export default function CarouselAdminPage() {
                       variant='destructive'
                       size='sm'
                       onClick={() => handleDelete(img.name)}
+                      className='self-start sm:self-auto'
                     >
                       Deletar
                     </Button>

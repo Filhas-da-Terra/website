@@ -193,9 +193,14 @@ export default function AlertsAdminPage() {
 
   return (
     <div className='space-y-8'>
-      <div className='flex justify-between items-center'>
+      <div className='flex flex-col sm:flex-row justify-between sm:items-center gap-4'>
         <h1 className='text-2xl font-semibold'>Gerenciar Alertas</h1>
-        <Button onClick={() => openDialog(null)}>Novo Alerta</Button>
+        <Button
+          onClick={() => openDialog(null)}
+          className='self-start sm:self-auto'
+        >
+          Novo Alerta
+        </Button>
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -206,8 +211,8 @@ export default function AlertsAdminPage() {
             </DialogTitle>
           </DialogHeader>
           <form onSubmit={onSubmit} className='grid gap-4 py-4'>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='title' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='title' className='md:text-right'>
                 Título
               </label>
               <input
@@ -215,12 +220,12 @@ export default function AlertsAdminPage() {
                 name='title'
                 value={form.title}
                 onChange={onChange}
-                className='col-span-3 p-2 border rounded-md bg-transparent'
+                className='md:col-span-3 p-2 border rounded-md bg-transparent'
                 required
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='message' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='message' className='md:text-right'>
                 Mensagem
               </label>
               <textarea
@@ -228,15 +233,15 @@ export default function AlertsAdminPage() {
                 name='message'
                 value={form.message}
                 onChange={onChange}
-                className='col-span-3 p-2 border rounded-md bg-transparent h-28'
+                className='md:col-span-3 p-2 border rounded-md bg-transparent h-28'
                 required
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='image' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='image' className='md:text-right'>
                 Imagem (opcional)
               </label>
-              <div className='col-span-3 space-y-2'>
+              <div className='md:col-span-3 space-y-2'>
                 {form.imageUrl && !selectedImage && (
                   <div className='text-xs text-gray-500 truncate'>
                     Imagem atual: {form.imageUrl}
@@ -254,11 +259,11 @@ export default function AlertsAdminPage() {
                 />
               </div>
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='video' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='video' className='md:text-right'>
                 Vídeo (opcional)
               </label>
-              <div className='col-span-3 space-y-2'>
+              <div className='md:col-span-3 space-y-2'>
                 {form.videoUrl && !selectedVideo && (
                   <div className='text-xs text-gray-500 truncate'>
                     Vídeo atual: {form.videoUrl}
@@ -276,8 +281,8 @@ export default function AlertsAdminPage() {
                 />
               </div>
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='linkUrl' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='linkUrl' className='md:text-right'>
                 Link (opcional)
               </label>
               <input
@@ -285,12 +290,12 @@ export default function AlertsAdminPage() {
                 name='linkUrl'
                 value={form.linkUrl || ''}
                 onChange={onChange}
-                className='col-span-3 p-2 border rounded-md bg-transparent'
+                className='md:col-span-3 p-2 border rounded-md bg-transparent'
                 placeholder='https://...'
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='linkLabel' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='linkLabel' className='md:text-right'>
                 Texto do Link
               </label>
               <input
@@ -298,12 +303,12 @@ export default function AlertsAdminPage() {
                 name='linkLabel'
                 value={form.linkLabel || ''}
                 onChange={onChange}
-                className='col-span-3 p-2 border rounded-md bg-transparent'
+                className='md:col-span-3 p-2 border rounded-md bg-transparent'
                 placeholder='Saiba mais'
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='startsAt' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='startsAt' className='md:text-right'>
                 Início
               </label>
               <input
@@ -312,11 +317,11 @@ export default function AlertsAdminPage() {
                 type='datetime-local'
                 value={form.startsAt || ''}
                 onChange={onChange}
-                className='col-span-3 p-2 border rounded-md bg-transparent'
+                className='md:col-span-3 p-2 border rounded-md bg-transparent'
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='endsAt' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='endsAt' className='md:text-right'>
                 Fim
               </label>
               <input
@@ -325,11 +330,11 @@ export default function AlertsAdminPage() {
                 type='datetime-local'
                 value={form.endsAt || ''}
                 onChange={onChange}
-                className='col-span-3 p-2 border rounded-md bg-transparent'
+                className='md:col-span-3 p-2 border rounded-md bg-transparent'
               />
             </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <label htmlFor='active' className='text-right'>
+            <div className='grid grid-cols-1 md:grid-cols-4 items-start md:items-center gap-2 md:gap-4'>
+              <label htmlFor='active' className='md:text-right'>
                 Ativo
               </label>
               <input
@@ -338,7 +343,7 @@ export default function AlertsAdminPage() {
                 type='checkbox'
                 checked={form.active}
                 onChange={onChange}
-                className='col-span-3 h-5 w-5'
+                className='h-5 w-5'
               />
             </div>
             <DialogFooter>
@@ -378,7 +383,7 @@ export default function AlertsAdminPage() {
                       ` • Fim: ${new Date(n.endsAt).toLocaleString()}`}
                   </div>
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex flex-wrap gap-2 self-start md:self-center'>
                   <Button
                     variant='outline'
                     size='sm'

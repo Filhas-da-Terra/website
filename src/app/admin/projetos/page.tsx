@@ -244,15 +244,15 @@ export default function ProjectsAdminPage() {
             {projects.map((project) => (
               <li
                 key={project.id}
-                className='p-4 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-900/30'
+                className='p-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-900/30'
               >
-                <div>
+                <div className='w-full sm:w-auto'>
                   <h3 className='font-semibold'>{project.title}</h3>
                   <p className='text-sm text-gray-500 mt-1 truncate max-w-md'>
                     {project.description}
                   </p>
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-2 flex-shrink-0 self-start sm:self-center'>
                   <Button
                     variant='outline'
                     size='sm'
