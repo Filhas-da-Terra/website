@@ -53,6 +53,6 @@ O bucket de armazenamento no Supabase esperado é `filhasDaTerra`.
 
 Acesse `/admin` para gerenciar o conteúdo do site. As seções disponíveis são:
 
--   `/admin/carousel`: Gerencie as imagens do carrossel da página inicial.
--   `/admin/projetos`: Adicione, edite e remova os projetos exibidos na página de projetos.
--   `/admin/avisos`: Crie, edite, ative/desative e remova avisos que aparecem em um pop-up na página inicial.
+- `/admin/carousel`: Gerencie as imagens do carrossel da página inicial.
+- `/admin/projetos`: Adicione, edite e remova os projetos exibidos na página de projetos.
+- `/admin/avisos`: Crie, edite, ative/desative e remova avisos que aparecem em um pop-up na página inicial.
