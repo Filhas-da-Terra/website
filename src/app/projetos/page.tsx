@@ -103,7 +103,7 @@ export default function ProjetosPage() {
           ].map((area, index) => (
             <span
               key={index}
-              className='text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full text-center font-medium'
+              className='text-sm bg-green-100 text-green-800 p-4 rounded-full text-center font-medium'
             >
               {area}
             </span>

@@ -1,11 +1,13 @@
 export default function About() {
   return (
     <div className='page-container'>
-      <main className="bg-[url('https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/ondas.png')] bg-cover bg-no-repeat bg-center ">
-        <div className='container mx-auto p-4'>
+      <main className="bg-[url('https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/ondas.png')] bg-cover bg-no-repeat bg-center relative">
+        {/* Overlay for better contrast */}
+        <div className='absolute inset-0 bg-white/90'></div>
+        <div className='container mx-auto p-4 relative z-10'>
           <section className='my-12 animate-fade-down animate-duration-1000'>
-            <h2 className='text-3xl font-bold text-slate-800'>Quem Somos</h2>
-            <p className='text-lg text-slate-800 mt-4'>
+            <h2 className='text-3xl font-bold text-black'>Quem Somos</h2>
+            <p className='text-lg text-black mt-4'>
               O Instituto Filhas da Terra surgiu em 2018 como Coletiva Filhas da
               Terra e foi formalizado em 2024. Desde sua criação, a associação
               sem fins lucrativos é impulsionada por jovens mulheres
@@ -24,10 +26,10 @@ export default function About() {
             </p>
           </section>
           <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[500ms]'>
-            <h3 className='text-2xl font-bold text-slate-800'>
+            <h3 className='text-2xl font-bold text-black'>
               Estrutura da Organização
             </h3>
-            <p className='text-lg text-slate-800 mt-4'>
+            <p className='text-lg text-black mt-4'>
               Atualmente, a organização é estruturada em 5 diretorias:
               administrativo, socioambiental, saúde, cultura e comunicação,
               sendo majoritariamente composta por mulheres negras, LGBTQIAPN+ e
@@ -36,10 +38,10 @@ export default function About() {
             </p>
           </section>
           <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[1000ms]'>
-            <h3 className='text-2xl font-bold text-slate-800'>
+            <h3 className='text-2xl font-bold text-black'>
               Articulação em Rede de Parcerias
             </h3>
-            <p className='text-lg text-slate-800 mt-4'>
+            <p className='text-lg text-black mt-4'>
               Atuamos de forma descentralizada, com ações em espaços como a Casa
               da Natureza, Ela Fav Mob e Jovem de Expressão. Estamos em parceria
               com Mulheres do Sol e Floresta da Nasaré, planejando hortas
@@ -54,8 +56,8 @@ export default function About() {
             </p>
           </section>
           <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[1500ms]'>
-            <h3 className='text-2xl font-bold text-slate-800'>Missão</h3>
-            <p className='text-lg text-slate-800 mt-4'>
+            <h3 className='text-2xl font-bold text-black'>Missão</h3>
+            <p className='text-lg text-black mt-4'>
               Promover a justiça social e ambiental nas áreas periféricas do
               Distrito Federal, fortalecendo a autonomia e a voz de mulheres
               negras e pessoas LGBTQIAPN+ por meio de ações educativas,
@@ -66,8 +68,8 @@ export default function About() {
             </p>
           </section>
           <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[2000ms]'>
-            <h3 className='text-2xl font-bold text-slate-800'>Visão</h3>
-            <p className='text-lg text-slate-800 mt-4'>
+            <h3 className='text-2xl font-bold text-black'>Visão</h3>
+            <p className='text-lg text-black mt-4'>
               Ser um instituto referência na promoção da equidade e
               sustentabilidade no cerrado, onde mulheres negras e pessoas
               LGBTQIAPN+ tenham acesso a recursos, conhecimento e espaços de
@@ -78,8 +80,8 @@ export default function About() {
             </p>
           </section>
           <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[2500ms]'>
-            <h3 className='text-2xl font-bold text-slate-800'>Valores</h3>
-            <ul className='list-disc list-inside mt-4 text-lg text-slate-800'>
+            <h3 className='text-2xl font-bold text-black'>Valores</h3>
+            <ul className='list-disc list-inside mt-4 text-lg text-black'>
               <li className='flex items-center'>
                 <span className='mr-2'>🌍</span> Respeito à diversidade
               </li>
@@ -101,10 +103,8 @@ export default function About() {
             </ul>
           </section>
           <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[3000ms]'>
-            <h3 className='text-2xl font-bold text-slate-800'>
-              Áreas de Atuação
-            </h3>
-            <ul className='list-disc list-inside mt-4 text-lg text-slate-800'>
+            <h3 className='text-2xl font-bold text-black'>Áreas de Atuação</h3>
+            <ul className='list-disc list-inside mt-4 text-lg text-black'>
               <li className='flex items-center'>
                 <span className='mr-2'>🏫</span> Ação Complementar à Escola
               </li>

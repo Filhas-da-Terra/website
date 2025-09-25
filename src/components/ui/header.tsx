@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -16,6 +17,7 @@ import ThemeSwitcher from './theme-switcher'
 export default function Header() {
   const [openPix, setOpenPix] = useState(false)
   const [openMenu, setOpenMenu] = useState(false)
+  const pathname = usePathname()
 
   return (
     <header className='bg-transparent shadow-xl shadow-gray-300 dark:shadow-gray-900'>
@@ -32,19 +34,35 @@ export default function Header() {
 
         {/* Navegação desktop */}
         <nav className='hidden md:flex items-center space-x-6 text-black dark:text-white'>
-          <Link href='/' className='hover:underline'>
+          <Link
+            href='/'
+            className={`hover:underline transition-colors ${pathname === '/' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+          >
             Início
           </Link>
-          <Link href='/sobre' className='hover:underline'>
+          <Link
+            href='/sobre'
+            className={`hover:underline transition-colors ${pathname === '/sobre' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+          >
             Quem Somos
           </Link>
-          <Link href='/projetos' className='hover:underline'>
+          <Link
+            href='/projetos'
+            className={`hover:underline transition-colors ${pathname === '/projetos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+          >
             Projetos
           </Link>
-          <Link href='/contatos' className='hover:underline'>
+          <Link
+            href='/contatos'
+            className={`hover:underline transition-colors ${pathname === '/contatos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+          >
             Contato
           </Link>
-          <Link href='/transparencia' onClick={() => setOpenMenu(false)}>
+          <Link
+            href='/transparencia'
+            className={`hover:underline transition-colors ${pathname === '/transparencia' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+            onClick={() => setOpenMenu(false)}
+          >
             Transparencia
           </Link>
           <ThemeSwitcher />
@@ -88,19 +106,39 @@ export default function Header() {
             <DialogContent className='bg-white dark:bg-black text-black dark:text-white max-w-xs'>
               <DialogTitle className='sr-only'>Menu</DialogTitle>
               <div className='flex flex-col gap-4 text-lg'>
-                <Link href='/' onClick={() => setOpenMenu(false)}>
+                <Link
+                  href='/'
+                  className={`transition-colors ${pathname === '/' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
                   Início
                 </Link>
-                <Link href='/sobre' onClick={() => setOpenMenu(false)}>
+                <Link
+                  href='/sobre'
+                  className={`transition-colors ${pathname === '/sobre' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
                   Quem Somos
                 </Link>
-                <Link href='/projetos' onClick={() => setOpenMenu(false)}>
+                <Link
+                  href='/projetos'
+                  className={`transition-colors ${pathname === '/projetos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
                   Projetos
                 </Link>
-                <Link href='/contatos' onClick={() => setOpenMenu(false)}>
+                <Link
+                  href='/contatos'
+                  className={`transition-colors ${pathname === '/contatos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
                   Contato
                 </Link>
-                <Link href='/transparencia' onClick={() => setOpenMenu(false)}>
+                <Link
+                  href='/transparencia'
+                  className={`transition-colors ${pathname === '/transparencia' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
                   Transparencia
                 </Link>
                 <Button

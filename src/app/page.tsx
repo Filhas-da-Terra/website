@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import Logo from '@/components/ui/logo'
 import {
   Dialog,
   DialogContent,
@@ -10,13 +11,11 @@ import {
 } from '@/components/ui/dialog'
 import { Card, CardContent } from '@/components/ui/card'
 import { Lightbulb, HeartHandshake, Leaf, Users, Computer } from 'lucide-react'
-import { useTheme } from 'next-themes'
 import CarouselComponent from '@/components/ui/carouselComponent'
 import { useEffect, useState } from 'react'
 import type { CarouselImage, PublicAlert } from '@/types'
 
 export default function Home() {
-  const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [images, setImages] = useState<CarouselImage[]>([])
   const [alert, setAlert] = useState<PublicAlert | null>(null)
@@ -60,10 +59,7 @@ export default function Home() {
     fetchAlert()
   }, [])
 
-  const logoSrc =
-    theme === 'light'
-      ? 'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/logoPreta.png'
-      : 'https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/logobranca1.png'
+  // Logo is now handled by the Logo component
   return (
     <main className='bg-[#F2F2F2] dark:bg-black text-[#111827] dark:text-white'>
       {/* HERO */}
@@ -85,7 +81,10 @@ export default function Home() {
             educativas e comunitárias
           </p>
           <Link href='/sobre'>
-            <Button className='mt-6 text-base cursor-pointer'>
+            <Button
+              className='mt-6 text-base bg-white hover:bg-gray-200 cursor-pointer p-4 text-[#2E4D3D]'
+              style={{ fontSize: '18px' }}
+            >
               Conheça mais
             </Button>
           </Link>
@@ -173,14 +172,7 @@ export default function Home() {
       </section>
       {mounted && (
         <section className='relative w-full mb-6 h-[80vh] flex items-center justify-center bg-white dark:bg-black'>
-          <Image
-            src={logoSrc}
-            alt='Instituto Filhas da Terra'
-            style={{ objectFit: 'cover' }}
-            priority
-            width={350}
-            height={350}
-          />
+          <Logo width={500} height={500} />
         </section>
       )}
       {/* CTA */}
@@ -195,7 +187,8 @@ export default function Home() {
         <Link href='/contatos'>
           <Button
             variant='secondary'
-            className='text-[#2E4D3D] bg-white hover:bg-gray-200 cursor-pointer'
+            className='text-[#2E4D3D] bg-white hover:bg-gray-200 cursor-pointer p-4'
+            style={{ fontSize: '18px' }}
           >
             Fale conosco
           </Button>
