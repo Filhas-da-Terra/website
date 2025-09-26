@@ -31,7 +31,10 @@ export default function Footer() {
         <div>
           <h4 className='text-lg font-semibold mb-2'>Contato</h4>
           <p>Email: institutofilhasdaterra@gmail.com</p>
-          <p>Parque da Lagoinha CH 16, Trecho 3 do Sol Nascente</p>
+          <p>
+            Condomínio Plaza Park, Chácara 114, conjunto B, casa 10 Sol
+            Nascente, Trecho 3, Brasília - DF, 72236-800
+          </p>
         </div>
         <div>
           <h4 className='text-lg font-semibold mb-2'>Redes Sociais</h4>

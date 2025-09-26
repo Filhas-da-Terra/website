@@ -10,10 +10,7 @@ export default function Transparencia() {
       </p>
       <ul className='list-disc pl-6'>
         <li>
-          <Link
-            href='/Instituto Filhas da Terra - Estatuto Social 08.09.2023 (v.registrada).pdf'
-            className='text-purple-700 underline'
-          >
+          <Link href='/estatuto' className='text-purple-700 underline'>
             Estatuto Social
           </Link>
         </li>
