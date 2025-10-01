@@ -6,12 +6,14 @@ interface LogoProps {
   width?: number
   height?: number
   className?: string
+  color?: string
 }
 
 export default function Logo({
   width = 350,
   height = 350,
   className = '',
+  color,
 }: LogoProps) {
   const { theme } = useTheme()
 
@@ -27,7 +29,7 @@ export default function Logo({
     >
       <g
         transform='translate(0.000000,3175.000000) scale(0.100000,-0.100000)'
-        fill={theme === 'dark' ? '#FFFFFF' : '#000000'}
+        fill={color || (theme === 'dark' ? '#FFFFFF' : '#000000')}
         stroke='none'
       >
         <path
