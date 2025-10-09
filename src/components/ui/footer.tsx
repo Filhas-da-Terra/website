@@ -32,7 +32,7 @@ export default function Footer() {
           <h4 className='text-lg font-semibold mb-2'>Contato</h4>
           <p>Email: institutofilhasdaterra@gmail.com</p>
           <p>
-            Condomínio Plaza Park, Chácara 114, conjunto B, casa 10 Sol
+            Condomínio Plaza Park, Chácara 114, Conjunto B, Casa 10 - Sol
             Nascente, Trecho 3, Brasília - DF, 72236-800
           </p>
         </div>

@@ -53,6 +53,18 @@ export default function Header() {
             Projetos
           </Link>
           <Link
+            href='/eventos'
+            className={`hover:underline transition-colors ${pathname === '/eventos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+          >
+            Eventos
+          </Link>
+          <Link
+            href='/conteudos'
+            className={`hover:underline transition-colors ${pathname === '/conteudos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+          >
+            Conteúdos
+          </Link>
+          <Link
             href='/contatos'
             className={`hover:underline transition-colors ${pathname === '/contatos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
           >
@@ -63,7 +75,7 @@ export default function Header() {
             className={`hover:underline transition-colors ${pathname === '/transparencia' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
             onClick={() => setOpenMenu(false)}
           >
-            Transparencia
+            Transparência
           </Link>
           <ThemeSwitcher />
           <Dialog open={openPix} onOpenChange={setOpenPix}>
@@ -126,6 +138,20 @@ export default function Header() {
                   onClick={() => setOpenMenu(false)}
                 >
                   Projetos
+                </Link>
+                <Link
+                  href='/eventos'
+                  className={`transition-colors ${pathname === '/eventos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
+                  Eventos
+                </Link>
+                <Link
+                  href='/conteudos'
+                  className={`transition-colors ${pathname === '/conteudos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
+                  Conteúdos
                 </Link>
                 <Link
                   href='/contatos'
