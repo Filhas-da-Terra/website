@@ -44,3 +44,14 @@ export type PublicAlert = {
   linkUrl?: string | null
   linkLabel?: string | null
 }
+
+export interface Content {
+  id: number
+  title: string
+  description: string
+  content: string
+  category: string
+  icon: string
+  link: string
+  linkText: string
+}

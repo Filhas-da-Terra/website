@@ -6,6 +6,8 @@ export async function POST(req: NextRequest) {
 
   const adminPassword = process.env.ADMIN_PASSWORD
 
+  console.log(adminPassword)
+
   if (!adminPassword) {
     console.error('ADMIN_PASSWORD environment variable is not set')
     return new NextResponse('Internal Server Error', { status: 500 })

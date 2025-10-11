@@ -17,6 +17,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
               Projetos
             </span>
           </Link>
+          <Link href='/admin/conteudos'>
+            <span className='flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer'>
+              Conteúdos
+            </span>
+          </Link>
           <Link href='/admin/alerts'>
             <span className='flex items-center px-3 py-2 text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer'>
               Avisos
