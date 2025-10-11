@@ -23,6 +23,17 @@ export default function ConteudosPage() {
 
   const contentItems = [
     {
+      id: 9,
+      title: 'Jardim do Bioma Cerrado recebe novas espécies nativas',
+      description: 'Plantio de espécies nativas do Cerrado',
+      content:
+        'Iniciativa de plantio de 70 mudas de espécies nativas do Cerrado na sede do Ibama, promovendo a refloração e refaunação em celebração ao Dia do Cerrado e Dia da Árvore.',
+      category: 'Documento',
+      icon: FileText,
+      link: '/novas-especies.pdf',
+      linkText: 'Visualizar',
+    },
+    {
       id: 1,
       title: 'Cadastro de Voluntários',
       description: 'Junte-se ao Instituto Filhas da Terra',
@@ -144,7 +155,7 @@ export default function ConteudosPage() {
           <button
             key={category}
             onClick={() => setActiveFilter(category)}
-            className={`px-4 py-2 rounded-lg transition-colors ${
+            className={`px-4 py-2 rounded-lg cursor-pointer transition-colors ${
               activeFilter === category
                 ? 'bg-[#92400e] text-white hover:bg-[#78350f]'
                 : 'border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800'
@@ -197,7 +208,7 @@ export default function ConteudosPage() {
       </div>
 
       {/* Seção de Newsletter */}
-      <div className='mt-16'>
+      {/* <div className='mt-16'>
         <div className='bg-gray-50 dark:bg-gray-800 rounded-lg p-8 text-center'>
           <h2 className='text-2xl font-bold text-[#92400e] dark:text-orange-400 mb-4'>
             Receba Novos Conteúdos
@@ -217,7 +228,7 @@ export default function ConteudosPage() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
