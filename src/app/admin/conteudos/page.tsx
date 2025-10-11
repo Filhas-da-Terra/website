@@ -30,6 +30,7 @@ const categoryIconMap: Record<string, string> = {
   Portfólio: 'FileCheck',
   Videoclipe: 'Music',
   Seminário: 'Globe',
+  Reportagem: 'Newspaper',
 }
 
 const categories = Object.keys(categoryIconMap)

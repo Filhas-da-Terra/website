@@ -18,7 +18,9 @@ export async function POST(req: NextRequest) {
     cookieStore.set('filhasdaterra-auth', adminPassword, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
       path: '/',
+      maxAge: 60 * 60 * 24 * 7, // 7 days
     })
     return new NextResponse('OK', { status: 200 })
   }

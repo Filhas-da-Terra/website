@@ -18,10 +18,12 @@ export default function LoginPage() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ password }),
       })
 
       if (res.ok) {
+        router.refresh()
         router.push('/admin')
       } else {
         setError('Senha incorreta')

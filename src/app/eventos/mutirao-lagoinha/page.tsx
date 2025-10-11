@@ -32,6 +32,12 @@ export default function MutiraoLagoinhaPage() {
       date: new Date(2025, 10, 1),
       color: 'bg-[#92400e]',
     },
+    {
+      id: 4,
+      name: 'Oficina: Compostagem e Hortas',
+      date: new Date(2025, 10, 6),
+      color: 'bg-green-500',
+    },
   ]
 
   return (

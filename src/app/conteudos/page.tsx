@@ -16,6 +16,7 @@ import {
   Globe,
   Music,
   AlertTriangle,
+  Newspaper,
   LucideIcon,
 } from 'lucide-react'
 import type { Content } from '@/types'
@@ -27,6 +28,7 @@ const iconMap: Record<string, LucideIcon> = {
   Globe,
   Music,
   AlertTriangle,
+  Newspaper,
 }
 
 export default function ConteudosPage() {
@@ -60,6 +62,7 @@ export default function ConteudosPage() {
     'Portfólio',
     'Videoclipe',
     'Seminário',
+    'Reportagem',
   ]
 
   const filteredItems =

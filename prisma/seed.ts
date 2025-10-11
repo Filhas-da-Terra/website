@@ -96,13 +96,94 @@ async function main() {
       link: 'https://youtu.be/LyNE8xCNjz4',
       linkText: 'Participar',
     },
+    {
+      title:
+        'Notícias de Lugar Nenhum: Os bens comuns no Brasil e os desafios às margens do direito',
+      description:
+        'Reportagem sobre os bens comuns no Brasil e o trabalho do Instituto Filhas da Terra',
+      content:
+        'Artigo da Labsus sobre os bens comuns no Brasil que menciona o trabalho do Instituto Filhas da Terra na defesa de nascentes e na luta pela justiça socioambiental.',
+      category: 'Reportagem',
+      icon: 'Newspaper',
+      link: 'https://www.labsus.org/2024/11/noticias-de-lugar-nenhum/',
+      linkText: 'Ler reportagem',
+    },
+    {
+      title:
+        'Plano comunitário de redução de riscos e adaptação climática: Sol Nascente – trechos II e III',
+      description:
+        'Análise e mapeamento de situações de risco e proposições junto com a comunidade, com aplicação de Soluções Baseadas na Natureza, por meio da comunidade como agente ativo e transformador.',
+      content:
+        'Documento disponível no Portal de Livros da UnB em parceria com o Instituto Filhas da Terra.',
+      category: 'Documento',
+      icon: 'FileText',
+      link: 'https://livros.unb.br/index.php/portal/catalog/view/678/918/8685',
+      linkText: 'Acessar documento',
+    },
+    {
+      title: 'Cadernos: Observatório Brasileiro de Hábitos Alimentares',
+      description:
+        'Cardernos OBHA Volume 1 | Número 4 | Setembro de 2023 | Revista Bimestral ISSN 2763-8324',
+      content: 'Entrevistando a Coletiva Filhas da Terra – Casa da Natureza',
+      category: 'Reportagem',
+      icon: 'Newspaper',
+      link: 'https://drive.google.com/file/d/1Q2HfVUfDYL4l0gYOh1TW4ZVBAuHguYRh/view',
+      linkText: 'Ler reportagem',
+    },
+    {
+      title:
+        'Projeto de termelétrica em Brasília e PL da Devastação colocam o Cerrado em risco',
+      description:
+        'Reportagem sobre a resistência popular à UTE Brasília e os riscos do PL da Devastação',
+      content:
+        'Reportagem sobre a tentativa de instalação da Usina Termelétrica (UTE) Brasília em Samambaia e os impactos do PL da Devastação, com menção à presidenta do Instituto Filhas da Terra, Larissa Cordeiro.',
+      category: 'Reportagem',
+      icon: 'Newspaper',
+      link: 'https://www.brasildefato.com.br/2025/07/02/projeto-de-termeletrica-em-brasilia-e-pl-da-devastacao-colocam-o-cerrado-em-risco/',
+      linkText: 'Ler reportagem',
+    },
+    {
+      title:
+        'Decisão judicial interrompe derrubada na Fazendinha do Sol Nascente',
+      description:
+        'Decisão judicial suspende operação do DF Legal na Fazendinha do Sol Nascente',
+      content:
+        'Reportagem sobre a decisão judicial que interrompeu a derrubada de muros e construções na Fazendinha do Sol Nascente, em área de preservação permanente.',
+      category: 'Reportagem',
+      icon: 'Newspaper',
+      link: 'https://www.correiobraziliense.com.br/cidades-df/2025/07/7208374-decisao-judicial-interrompe-derrubada-na-fazendinha-do-sol-nascente.html?utm_source=chatgpt.com',
+      linkText: 'Ler reportagem',
+    },
+    {
+      title:
+        'Justiça do DF suspende derrubadas de casas em comunidade no Sol Nascente',
+      description:
+        'Decisão judicial protege comunidade do Sol Nascente contra remoções forçadas',
+      content:
+        'Reportagem sobre a decisão da Justiça do Distrito Federal que suspendeu as derrubadas de casas na comunidade do Sol Nascente.',
+      category: 'Reportagem',
+      icon: 'Newspaper',
+      link: 'https://www.brasildefato.com.br/2025/07/23/justica-do-df-suspende-derrubadas-de-casas-em-comunidade-no-sol-nascente/',
+      linkText: 'Ler reportagem',
+    },
   ]
 
   for (const item of contentItems) {
-    await prisma.content.create({
-      data: item,
+    // Check if item already exists by link
+    const existing = await prisma.content.findFirst({
+      where: {
+        link: item.link,
+      },
     })
-    console.log(`Created: ${item.title}`)
+
+    if (existing) {
+      console.log(`Already exists: ${item.title}`)
+    } else {
+      await prisma.content.create({
+        data: item,
+      })
+      console.log(`Created: ${item.title}`)
+    }
   }
 
   console.log('Seeding completed!')

@@ -3,16 +3,15 @@ import {
   Calendar,
   Clock,
   MapPin,
-  ExternalLink,
   ArrowLeft,
   Users,
   Leaf,
-  Music,
+  Sprout,
 } from 'lucide-react'
 import Link from 'next/link'
 import EventCalendar from '@/components/ui/event-calendar'
 
-export default function FeiraSementesPage() {
+export default function CompostagemHortasPage() {
   // All events data
   const events = [
     {
@@ -57,12 +56,12 @@ export default function FeiraSementesPage() {
       {/* Event Header */}
       <div className='text-center mb-12'>
         <h1 className='text-4xl font-bold text-[#92400e] dark:text-orange-400 mb-4'>
-          🌾 Feira de Sementes e Mudas – Floresta da Nasaré 🌿
+          🌱 Oficina: Compostagem e Hortas Comunitárias 🌿
         </h1>
         <p className='text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
-          No Dia de Todos os Santos, 1 de novembro, a Floresta da Nasaré se
-          transforma em um grande ponto de encontro entre saberes, sementes e
-          muita arte cultura 🌱
+          Workshop promovido pela Adasa sobre compostagem descentralizada e
+          fortalecimento de hortas comunitárias, com participação do Instituto
+          Filhas da Terra.
         </p>
       </div>
 
@@ -82,18 +81,30 @@ export default function FeiraSementesPage() {
               <div className='space-y-4'>
                 <div className='flex items-center gap-3 text-gray-700 dark:text-gray-300'>
                   <Calendar className='w-5 h-5 text-[#92400e] dark:text-orange-400' />
-                  <span className='font-semibold'>1 de novembro, 2025</span>
+                  <span className='font-semibold'>6 de novembro, 2025</span>
                 </div>
                 <div className='flex items-center gap-3 text-gray-700 dark:text-gray-300'>
                   <Clock className='w-5 h-5 text-[#92400e] dark:text-orange-400' />
-                  <span className='font-semibold'>9h às 17h</span>
+                  <span className='font-semibold'>14:30 às 17:15</span>
                 </div>
                 <div className='flex items-start gap-3 text-gray-700 dark:text-gray-300'>
                   <MapPin className='w-5 h-5 text-[#92400e] dark:text-orange-400 mt-1' />
                   <div>
-                    <span className='font-semibold'>Floresta da Nasaré</span>
+                    <span className='font-semibold'>
+                      Auditório da Administração Regional de Ceilândia
+                    </span>
                     <p className='text-sm text-gray-600 dark:text-gray-400'>
-                      QNR 5, Ceilândia, próxima à BR-070
+                      Ceilândia, Distrito Federal
+                    </p>
+                  </div>
+                </div>
+                <div className='flex items-start gap-3 text-gray-700 dark:text-gray-300'>
+                  <Users className='w-5 h-5 text-[#92400e] dark:text-orange-400 mt-1' />
+                  <div>
+                    <span className='font-semibold'>Organização: Adasa</span>
+                    <p className='text-sm text-gray-600 dark:text-gray-400'>
+                      Agência Reguladora de Águas, Energia e Saneamento Básico
+                      do Distrito Federal
                     </p>
                   </div>
                 </div>
@@ -105,7 +116,7 @@ export default function FeiraSementesPage() {
           <Card className='hover:shadow-lg transition-shadow duration-300'>
             <CardHeader>
               <CardTitle className='text-[#92400e] dark:text-orange-400 flex items-center gap-2'>
-                <Music className='w-5 h-5' />
+                <Sprout className='w-5 h-5' />
                 Programação
               </CardTitle>
             </CardHeader>
@@ -117,10 +128,11 @@ export default function FeiraSementesPage() {
                   </div>
                   <div>
                     <h4 className='font-semibold text-gray-800 dark:text-gray-200'>
-                      Feira de sementes, mudas e artesanato
+                      14:30 - Abertura Oficial
                     </h4>
                     <p className='text-sm text-gray-600 dark:text-gray-400'>
-                      Troca e venda de produtos locais e sustentáveis
+                      Diretoria da Adasa e representante da Administração
+                      Regional de Ceilândia
                     </p>
                   </div>
                 </div>
@@ -130,11 +142,11 @@ export default function FeiraSementesPage() {
                   </div>
                   <div>
                     <h4 className='font-semibold text-gray-800 dark:text-gray-200'>
-                      Rodas de conversa sobre agroecologia e soberania alimentar
+                      14:50 - A história e os aprendizados da Floresta da Nasaré
                     </h4>
                     <p className='text-sm text-gray-600 dark:text-gray-400'>
-                      Discussões sobre práticas sustentáveis e autonomia
-                      alimentar
+                      Com Nasaré Francisco da Silva (Floresta da Nasaré) e
+                      Wanderley Souza (Instituto Filhas da Terra)
                     </p>
                   </div>
                 </div>
@@ -144,11 +156,62 @@ export default function FeiraSementesPage() {
                   </div>
                   <div>
                     <h4 className='font-semibold text-gray-800 dark:text-gray-200'>
-                      Apresentações culturais
+                      15:20 - O papel da Adasa na promoção da sustentabilidade e
+                      na regulação dos serviços de resíduos sólidos
                     </h4>
                     <p className='text-sm text-gray-600 dark:text-gray-400'>
-                      Com Baque Dando Onda e outras atrações
+                      Com Élen Dânia Santos (Superintendente de Resíduos Sólidos
+                      da Adasa)
                     </p>
+                  </div>
+                </div>
+                <div className='flex items-start gap-3'>
+                  <div className='w-8 h-8 bg-[#92400e] dark:bg-orange-400 rounded-full flex items-center justify-center text-white text-sm font-bold'>
+                    4
+                  </div>
+                  <div>
+                    <h4 className='font-semibold text-gray-800 dark:text-gray-200'>
+                      15:40 - Boas práticas agroecológicas e fortalecimento das
+                      hortas comunitárias
+                    </h4>
+                    <p className='text-sm text-gray-600 dark:text-gray-400'>
+                      Com Isabella Carlota Sousa Belo e Rogério Lúcio Vianna
+                      (EMATER)
+                    </p>
+                  </div>
+                </div>
+                <div className='flex items-start gap-3'>
+                  <div className='w-8 h-8 bg-[#92400e] dark:bg-orange-400 rounded-full flex items-center justify-center text-white text-sm font-bold'>
+                    5
+                  </div>
+                  <div>
+                    <h4 className='font-semibold text-gray-800 dark:text-gray-200'>
+                      16:20 - Intervalo
+                    </h4>
+                  </div>
+                </div>
+                <div className='flex items-start gap-3'>
+                  <div className='w-8 h-8 bg-[#92400e] dark:bg-orange-400 rounded-full flex items-center justify-center text-white text-sm font-bold'>
+                    6
+                  </div>
+                  <div>
+                    <h4 className='font-semibold text-gray-800 dark:text-gray-200'>
+                      16:35 - Compostagem descentralizada: um caminho para
+                      transformar resíduos em adubo
+                    </h4>
+                    <p className='text-sm text-gray-600 dark:text-gray-400'>
+                      Com Allysson Sullyvan (SLU)
+                    </p>
+                  </div>
+                </div>
+                <div className='flex items-start gap-3'>
+                  <div className='w-8 h-8 bg-[#92400e] dark:bg-orange-400 rounded-full flex items-center justify-center text-white text-sm font-bold'>
+                    7
+                  </div>
+                  <div>
+                    <h4 className='font-semibold text-gray-800 dark:text-gray-200'>
+                      17:15 - Encerramento
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -165,12 +228,22 @@ export default function FeiraSementesPage() {
             </CardHeader>
             <CardContent>
               <p className='text-gray-700 dark:text-gray-300 mb-4'>
-                É uma oportunidade de fortalecer a agricultura urbana, celebrar
-                a biodiversidade, a soberania alimentar e o poder da
-                coletividade dentro da nossa quebrada.
+                Esta oficina tem como objetivo promover a sustentabilidade
+                através da compostagem descentralizada e o fortalecimento das
+                hortas comunitárias. O evento conta com a participação de
+                diversos especialistas e representantes de organizações
+                comprometidas com práticas agroecológicas e gestão adequada de
+                resíduos sólidos.
               </p>
               <p className='text-gray-700 dark:text-gray-300 mb-4'>
-                A participação é livre e aberta a todos os públicos.
+                O Instituto Filhas da Terra participa apresentando a história e
+                os aprendizados da Floresta da Nasaré, compartilhando
+                experiências práticas de cuidado ambiental e fortalecimento
+                comunitário.
+              </p>
+              <p className='text-gray-700 dark:text-gray-300'>
+                A participação é gratuita e aberta ao público interessado em
+                compostagem, hortas comunitárias e práticas sustentáveis.
               </p>
             </CardContent>
           </Card>
@@ -181,57 +254,45 @@ export default function FeiraSementesPage() {
           {/* Calendar Component */}
           <EventCalendar
             events={events}
-            initialDate={new Date(2025, 10, 1)}
+            initialDate={new Date(2025, 10, 6)}
             title='Calendário do Evento'
-            highlightEventId={3}
+            highlightEventId={4}
           />
 
-          {/* Registration Card */}
+          {/* Organizers Card */}
           <Card className='hover:shadow-lg transition-shadow duration-300'>
             <CardHeader>
               <CardTitle className='text-[#92400e] dark:text-orange-400 flex items-center gap-2'>
                 <Users className='w-5 h-5' />
-                Quer Expor?
+                Organização
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
-                Se você quer expor na feira, inscreva-se pelo formulário
-                oficial.
+              <p className='text-sm text-gray-600 dark:text-gray-300 mb-2'>
+                <strong>Adasa</strong>
               </p>
-              <a
-                href='https://docs.google.com/forms/d/e/1FAIpQLSdaf4lqUitqNsok8ABlvs9tZxBpUI1tTCQUq2NPFqdxlhyCIQ/viewform?usp=header'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='w-full inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#92400e] text-white rounded-lg hover:bg-[#78350f] transition-colors text-sm'
-              >
-                <ExternalLink className='w-4 h-4' />
-                Inscrever-se
-              </a>
+              <p className='text-sm text-gray-600 dark:text-gray-300'>
+                Agência Reguladora de Águas, Energia e Saneamento Básico do
+                Distrito Federal
+              </p>
             </CardContent>
           </Card>
 
-          {/* Instagram Card */}
+          {/* Partners Card */}
           <Card className='hover:shadow-lg transition-shadow duration-300'>
             <CardHeader>
               <CardTitle className='text-[#92400e] dark:text-orange-400 flex items-center gap-2'>
-                <ExternalLink className='w-5 h-5' />
-                Mais Informações
+                <Users className='w-5 h-5' />
+                Participação
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className='text-sm text-gray-600 dark:text-gray-300 mb-4'>
-                Acompanhe mais detalhes e atualizações no Instagram.
-              </p>
-              <a
-                href='https://www.instagram.com/p/DPjXBBegL7Z/?igsh=MTJ0MzU4N25mYnNo'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='w-full inline-flex items-center justify-center gap-2 px-4 py-2 border border-[#92400e] dark:border-orange-400 text-[#92400e] dark:text-orange-400 rounded-lg hover:bg-[#92400e] hover:text-white dark:hover:bg-orange-400 dark:hover:text-black transition-colors text-sm'
-              >
-                <ExternalLink className='w-4 h-4' />
-                Ver no Instagram
-              </a>
+              <ul className='space-y-2 text-sm text-gray-600 dark:text-gray-300'>
+                <li>• Instituto Filhas da Terra</li>
+                <li>• Floresta da Nasaré</li>
+                <li>• EMATER</li>
+                <li>• SLU</li>
+              </ul>
             </CardContent>
           </Card>
         </div>
