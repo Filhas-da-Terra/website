@@ -48,13 +48,23 @@ export default function EventosPage() {
               </div>
               <p className='mt-4 text-sm text-gray-700 dark:text-gray-300'>
                 Oficina promovida pela Adasa com participação do Instituto
-                Filhas da Terra sobre compostagem descentralizada e boas
-                práticas agroecológicas.
+                Filhas da Terra sobre compostagem e boas práticas
+                agroecológicas.
               </p>
               <div className='mt-4 flex gap-2'>
                 <span className='inline-flex items-center gap-2 px-3 py-2 bg-[#92400e] text-white rounded-lg text-sm'>
                   Ver Detalhes
                 </span>
+                <a
+                  href='https://www.instagram.com/p/DQmZ3URkXMA/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  onClick={(e) => e.stopPropagation()}
+                  className='inline-flex items-center gap-2 px-3 py-2 border border-[#92400e] dark:border-orange-400 text-[#92400e] dark:text-orange-400 rounded-lg hover:bg-[#92400e] hover:text-white dark:hover:bg-orange-400 dark:hover:text-black transition-colors text-sm'
+                >
+                  <ExternalLink className='w-4 h-4' />
+                  Instagram
+                </a>
               </div>
             </CardContent>
           </Link>

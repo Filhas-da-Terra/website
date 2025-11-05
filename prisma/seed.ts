@@ -103,10 +103,10 @@ async function main() {
         'Reportagem sobre os bens comuns no Brasil e o trabalho do Instituto Filhas da Terra',
       content:
         'Artigo da Labsus sobre os bens comuns no Brasil que menciona o trabalho do Instituto Filhas da Terra na defesa de nascentes e na luta pela justiça socioambiental.',
-      category: 'Reportagem',
-      icon: 'Newspaper',
+      category: 'Documento',
+      icon: 'FileText',
       link: 'https://www.labsus.org/2024/11/noticias-de-lugar-nenhum/',
-      linkText: 'Ler reportagem',
+      linkText: 'Ler publicação',
     },
     {
       title:
@@ -177,7 +177,11 @@ async function main() {
     })
 
     if (existing) {
-      console.log(`Already exists: ${item.title}`)
+      await prisma.content.update({
+        where: { id: existing.id },
+        data: item,
+      })
+      console.log(`Updated: ${item.title}`)
     } else {
       await prisma.content.create({
         data: item,

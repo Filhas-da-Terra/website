@@ -54,4 +54,24 @@ export interface Content {
   icon: string
   link: string
   linkText: string
+  imageUrl?: string | null
+  featured?: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+export interface EventItem {
+  id: number
+  title: string
+  description: string
+  content: string
+  eventDate: string
+  eventTime?: string | null
+  location?: string | null
+  imageUrl?: string | null
+  instagramUrl?: string | null
+  featured?: boolean
+  slug: string
+  createdAt: string
+  updatedAt: string
 }

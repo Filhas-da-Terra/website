@@ -13,7 +13,7 @@ import {
   DialogClose,
 } from '@/components/ui/dialog'
 
-const initialFormData: Omit<Content, 'id'> = {
+const initialFormData: Omit<Content, 'id' | 'createdAt' | 'updatedAt'> = {
   title: '',
   description: '',
   content: '',
@@ -21,6 +21,8 @@ const initialFormData: Omit<Content, 'id'> = {
   icon: 'FileText',
   link: '',
   linkText: 'Visualizar',
+  imageUrl: '',
+  featured: false,
 }
 
 const categoryIconMap: Record<string, string> = {
@@ -44,6 +46,7 @@ export default function ContentAdminPage() {
   const [editingContent, setEditingContent] = useState<Content | null>(null)
   const [formData, setFormData] = useState(initialFormData)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const fetchContents = async () => {
@@ -67,7 +70,8 @@ export default function ContentAdminPage() {
   const handleFormChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
-    const { name, value } = e.target
+    const { name, value, type } = e.target
+
     if (name === 'category') {
       // Automatically set icon based on category
       setFormData((prev) => ({
@@ -75,6 +79,9 @@ export default function ContentAdminPage() {
         category: value,
         icon: categoryIconMap[value],
       }))
+    } else if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked
+      setFormData((prev) => ({ ...prev, [name]: checked }))
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }))
     }
@@ -84,6 +91,7 @@ export default function ContentAdminPage() {
     setEditingContent(content)
     setFormData(content ? { ...content } : initialFormData)
     setSelectedFile(null)
+    setSelectedImageFile(null)
     setIsDialogOpen(true)
   }
 
@@ -92,6 +100,7 @@ export default function ContentAdminPage() {
     setEditingContent(null)
     setFormData(initialFormData)
     setSelectedFile(null)
+    setSelectedImageFile(null)
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -101,6 +110,33 @@ export default function ContentAdminPage() {
     const payload = { ...formData }
 
     try {
+      // Handle image file upload if an image is selected
+      if (selectedImageFile) {
+        const safeName = selectedImageFile.name.replace(
+          /[^a-zA-Z0-9.\-_]/g,
+          '_',
+        )
+        const filePath = `content-images/${Date.now()}-${safeName}`
+
+        const { error: uploadError } = await supabase.storage
+          .from('filhasDaTerra')
+          .upload(filePath, selectedImageFile, {
+            cacheControl: '3600',
+            upsert: false,
+            contentType: selectedImageFile.type,
+          })
+
+        if (uploadError) {
+          throw new Error(`Falha no upload da imagem: ${uploadError.message}`)
+        }
+
+        const { data: publicData } = supabase.storage
+          .from('filhasDaTerra')
+          .getPublicUrl(filePath)
+
+        payload.imageUrl = publicData.publicUrl
+      }
+
       // Handle file upload if a file is selected
       if (selectedFile) {
         const safeName = selectedFile.name.replace(/[^a-zA-Z0-9.\-_]/g, '_')
@@ -295,6 +331,52 @@ export default function ContentAdminPage() {
                 className='col-span-3 p-2 border rounded-md bg-transparent'
               />
             </div>
+            <div className='grid grid-cols-4 items-center gap-4'>
+              <label htmlFor='imageUrl' className='text-right'>
+                Imagem URL
+              </label>
+              <div className='col-span-3 space-y-2'>
+                <input
+                  id='imageUrl'
+                  name='imageUrl'
+                  value={formData.imageUrl || ''}
+                  onChange={handleFormChange}
+                  placeholder='URL da imagem ou deixe vazio para upload'
+                  className='w-full p-2 border rounded-md bg-transparent'
+                />
+                <div className='text-xs text-gray-500'>
+                  Ou faça upload de uma imagem:
+                </div>
+                <input
+                  id='imageFile'
+                  name='imageFile'
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) =>
+                    setSelectedImageFile(e.target.files?.[0] || null)
+                  }
+                  className='w-full text-sm bg-zinc-500 p-2 rounded-md'
+                />
+              </div>
+            </div>
+            <div className='grid grid-cols-4 items-center gap-4'>
+              <label htmlFor='featured' className='text-right'>
+                Destaque
+              </label>
+              <div className='col-span-3 flex items-center gap-2'>
+                <input
+                  id='featured'
+                  name='featured'
+                  type='checkbox'
+                  checked={formData.featured || false}
+                  onChange={handleFormChange}
+                  className='w-5 h-5 cursor-pointer'
+                />
+                <span className='text-sm text-gray-500'>
+                  Marcar como conteúdo em destaque
+                </span>
+              </div>
+            </div>
             <DialogFooter>
               <DialogClose asChild>
                 <Button
@@ -329,7 +411,14 @@ export default function ContentAdminPage() {
                 className='p-4 flex flex-col sm:flex-row justify-between sm:items-center gap-4 hover:bg-gray-50 dark:hover:bg-gray-900/30'
               >
                 <div className='w-full sm:w-auto'>
-                  <h3 className='font-semibold'>{content.title}</h3>
+                  <div className='flex items-center gap-2'>
+                    <h3 className='font-semibold'>{content.title}</h3>
+                    {content.featured && (
+                      <span className='text-xs bg-orange-500 text-white px-2 py-0.5 rounded font-medium'>
+                        DESTAQUE
+                      </span>
+                    )}
+                  </div>
                   <p className='text-sm text-gray-500 mt-1'>
                     {content.description}
                   </p>
@@ -337,6 +426,11 @@ export default function ContentAdminPage() {
                     <span className='text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded'>
                       {content.category}
                     </span>
+                    {content.imageUrl && (
+                      <span className='text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-2 py-1 rounded'>
+                        📷 Com imagem
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className='flex gap-2 flex-shrink-0 self-start sm:self-center'>
