@@ -100,9 +100,9 @@ export default function ConteudosPage() {
             </h1>
           </div>
           <p className='text-lg text-gray-600 dark:text-gray-300 max-w-3xl'>
-            Acesse publicações acadêmicas, reportagens, petições, vídeos,
-            documentos e pesquisas produzidas pelo Instituto Filhas da Terra na
-            luta por justiça socioambiental no Distrito Federal.
+            Acesse artigos, reportagens, petições, vídeos e documentos
+            produzidas pelo Instituto Filhas da Terra e parceiros na luta por
+            justiça socioambiental.
           </p>
         </div>
 
