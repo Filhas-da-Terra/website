@@ -197,35 +197,40 @@ export default function Home() {
 
       {/* Alert Popup */}
       <Dialog open={showAlert} onOpenChange={setShowAlert}>
-        <DialogContent className='sm:max-w-[480px]'>
+        <DialogContent className='sm:max-w-[700px] max-h-[90vh] overflow-y-auto'>
           <DialogHeader>
-            <DialogTitle>{alert?.title || 'Aviso'}</DialogTitle>
+            <DialogTitle className='text-2xl font-bold text-[#92400e] dark:text-orange-400 pr-8'>
+              {alert?.title || 'Aviso'}
+            </DialogTitle>
           </DialogHeader>
-          <div className='space-y-3'>
+          <div className='space-y-6'>
+            <div className='prose dark:prose-invert max-w-none'>
+              <p className='whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed'>
+                {alert?.message}
+              </p>
+            </div>
             {alert?.imageUrl && (
-              <Image
-                src={alert.imageUrl}
-                alt={alert.title}
-                className='w-full rounded-md'
-                width={800}
-                height={450}
-              />
+              <div className='flex justify-center items-center bg-white p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700'>
+                <Image
+                  src={alert.imageUrl}
+                  alt={alert.title}
+                  width={350}
+                  height={350}
+                  className='rounded-lg'
+                />
+              </div>
             )}
-            {alert?.videoUrl && (
-              <video controls className='w-full rounded-md'>
-                <source src={alert.videoUrl} />
-              </video>
-            )}
-            <div className='whitespace-pre-wrap'>{alert?.message}</div>
             {alert?.linkUrl && (
-              <a
-                href={alert.linkUrl}
-                target='_blank'
-                rel='noopener noreferrer'
-                className='inline-flex items-center text-blue-600 underline'
-              >
-                {alert.linkLabel || 'Saiba mais'}
-              </a>
+              <div className='flex flex-col sm:flex-row gap-4 items-center justify-center pt-4 border-t border-gray-200 dark:border-gray-700'>
+                <a
+                  href={alert.linkUrl}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='inline-flex items-center justify-center px-6 py-3 bg-[#92400e] text-white rounded-lg hover:bg-[#78350f] transition-colors font-medium shadow-lg hover:shadow-xl w-full sm:w-auto'
+                >
+                  {alert.linkLabel || 'Saiba mais'}
+                </a>
+              </div>
             )}
           </div>
         </DialogContent>
