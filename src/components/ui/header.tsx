@@ -70,13 +70,13 @@ export default function Header() {
           >
             Contato
           </Link>
-          <Link
+          {/* <Link
             href='/transparencia'
             className={`hover:underline transition-colors ${pathname === '/transparencia' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
             onClick={() => setOpenMenu(false)}
           >
             Transparência
-          </Link>
+          </Link> */}
           <ThemeSwitcher />
           <Dialog open={openPix} onOpenChange={setOpenPix}>
             <DialogTrigger asChild>
