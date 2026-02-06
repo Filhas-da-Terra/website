@@ -3,14 +3,17 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Project {
   id: number
   title: string
   description: string
+  content: string | null
   imageUrl: string | null
-  projectUrl: string | null
+  slug: string | null
 }
 
 export default function ProjetosPage() {
@@ -69,6 +72,11 @@ export default function ProjetosPage() {
                 <p className='mt-2 text-muted-foreground'>
                   {projeto.description}
                 </p>
+                {projeto.slug && (
+                  <Button asChild className='mt-4'>
+                    <Link href={`/projetos/${projeto.slug}`}>Saiba Mais</Link>
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}

@@ -1,9 +1,19 @@
+export interface ProjectSection {
+  id: number
+  title: string
+  content: string
+  imageUrl: string | null
+  order: number
+  projectId: number
+}
+
 export interface Project {
   id: number
   title: string
   description: string
   imageUrl: string | null
-  projectUrl: string | null
+  slug: string | null
+  sections?: ProjectSection[]
 }
 
 export interface CarouselImage {
