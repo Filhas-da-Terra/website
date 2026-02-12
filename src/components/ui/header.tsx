@@ -65,6 +65,12 @@ export default function Header() {
             Conteúdos
           </Link>
           <Link
+            href='/blog'
+            className={`hover:underline transition-colors ${pathname === '/blog' || pathname?.startsWith('/blog/') ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+          >
+            Blog
+          </Link>
+          <Link
             href='/contatos'
             className={`hover:underline transition-colors ${pathname === '/contatos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
           >
@@ -152,6 +158,13 @@ export default function Header() {
                   onClick={() => setOpenMenu(false)}
                 >
                   Conteúdos
+                </Link>
+                <Link
+                  href='/blog'
+                  className={`transition-colors ${pathname === '/blog' || pathname?.startsWith('/blog/') ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
+                  onClick={() => setOpenMenu(false)}
+                >
+                  Blog
                 </Link>
                 <Link
                   href='/contatos'

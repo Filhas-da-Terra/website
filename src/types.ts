@@ -85,3 +85,18 @@ export interface EventItem {
   createdAt: string
   updatedAt: string
 }
+
+export interface BlogPost {
+  id: number
+  title: string
+  slug: string
+  author: string | null
+  authorBio: string | null
+  authorImageUrl: string | null
+  excerpt: string
+  content: string
+  imageUrl: string | null
+  published: boolean
+  createdAt: string
+  updatedAt: string
+}
