@@ -77,8 +77,9 @@ export default function Home() {
             Justiça socioambiental nas periferias do DF
           </h1>
           <p className='text-lg mt-4 text-white drop-shadow animate-fade-down animate-duration-1000 animate-delay-[500ms]'>
-            Atuamos em Ceilândia e Sol Nascente por meio de ações culturais,
-            educativas e comunitárias
+            Atuamos em Ceilândia, Sol Nascente, Pôr do Sol, Samambaia,
+            Brazlândia e Taguatinga por meio de ações culturais, educativas e
+            comunitárias
           </p>
           <Link href='/sobre'>
             <Button

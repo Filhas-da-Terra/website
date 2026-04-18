@@ -64,7 +64,7 @@ export default function Footer() {
               <IconBrandX className='w-6 h-6' />
             </Link>
             <Link
-              href='https://www.youtube.com/channel/UC56htIaWgV4HF3rTYSsMSzQ'
+              href='https://www.youtube.com/@InstitutoFilhasdaTerra'
               title='Youtube'
               target='_blank'
               rel='noopener noreferrer'
