@@ -59,10 +59,8 @@ export default function Home() {
     fetchAlert()
   }, [])
 
-  // Logo is now handled by the Logo component
   return (
     <main className='bg-[#F2F2F2] dark:bg-black text-[#111827] dark:text-white'>
-      {/* HERO */}
       <section className='relative w-full h-[80vh] flex items-center justify-center bg-black'>
         <Image
           src='https://nkualykoqttmxfbhydav.supabase.co/storage/v1/object/public/filhasDaTerra/hero.jpg'

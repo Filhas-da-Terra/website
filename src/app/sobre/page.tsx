@@ -1,3 +1,5 @@
+import { OdsSection } from '@/components/sobre/ods-section'
+
 export default function About() {
   return (
     <div className='page-container'>
@@ -79,85 +81,7 @@ export default function About() {
               potável em âmbito nacional e mundial.
             </p>
           </section>
-          <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[2500ms]'>
-            <h3 className='text-2xl font-bold text-black'>Valores</h3>
-            <ul className='list-disc list-inside mt-4 text-lg text-black'>
-              <li className='flex items-center'>
-                <span className='mr-2'>🌍</span> Respeito à diversidade
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>💪</span> Empoderamento
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🌱</span> Sustentabilidade
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🤝</span> Colaboração
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🌟</span> Transformação Social
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>✊</span> Ativismo e Defesa de Direitos
-              </li>
-            </ul>
-          </section>
-          <section className='my-12 animate-fade-down animate-duration-1000 animate-delay-[3000ms]'>
-            <h3 className='text-2xl font-bold text-black'>Áreas de Atuação</h3>
-            <ul className='list-disc list-inside mt-4 text-lg text-black'>
-              <li className='flex items-center'>
-                <span className='mr-2'>🏫</span> Ação Complementar à Escola
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>💼</span> Economia Solidária
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🎓</span> Formação Profissional
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>⚽</span> Práticas Esportivas
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🎭</span> Promoção da Cultura
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🔬</span> Ciência e Tecnologia
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>📡</span> Comunicação
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🎨</span> Cultura e Artes
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>⚖️</span> Defesa de Direitos
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🏘️</span> Desenvolvimento Comunitário
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>📚</span> Educação
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🏅</span> Esportes
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🛠️</span> Formação para o Trabalho
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🌳</span> Meio Ambiente
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>❤️</span> Saúde
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>📖</span> Educação Não Formal
-              </li>
-              <li className='flex items-center'>
-                <span className='mr-2'>🌈</span> Qualidade de Vida
-              </li>
-            </ul>
-          </section>
+          <OdsSection />
         </div>
       </main>
     </div>
