@@ -22,6 +22,7 @@ const initialFormData: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'> = {
   excerpt: '',
   content: '',
   imageUrl: null,
+  youtubeUrls: [],
   published: false,
 }
 
@@ -97,6 +98,7 @@ export default function BlogAdminPage() {
             excerpt: post.excerpt,
             content: post.content,
             imageUrl: post.imageUrl,
+            youtubeUrls: post.youtubeUrls || [],
             published: post.published,
           }
         : initialFormData,
@@ -123,6 +125,7 @@ export default function BlogAdminPage() {
       authorBio: formData.authorBio || null,
       authorImageUrl: formData.authorImageUrl || null,
       imageUrl: formData.imageUrl || null,
+      youtubeUrls: (formData.youtubeUrls || []).filter(Boolean),
     }
 
     try {
@@ -343,6 +346,25 @@ export default function BlogAdminPage() {
                 onChange={handleFormChange}
                 required
                 className='col-span-3 p-2 border rounded-md bg-transparent h-32'
+              />
+            </div>
+            <div className='grid grid-cols-4 items-center gap-4'>
+              <label htmlFor='youtubeUrls' className='text-right'>
+                Vídeos (YouTube)
+              </label>
+              <textarea
+                id='youtubeUrls'
+                name='youtubeUrls'
+                value={(formData.youtubeUrls || []).join('\n')}
+                onChange={(e) => {
+                  const urls = e.target.value
+                    .split('\n')
+                    .map((s) => s.trim())
+                    .filter(Boolean)
+                  setFormData((prev) => ({ ...prev, youtubeUrls: urls }))
+                }}
+                placeholder='Cole 1 link por linha (opcional)'
+                className='col-span-3 p-2 border rounded-md bg-transparent h-20'
               />
             </div>
             <div className='grid grid-cols-4 items-center gap-4'>

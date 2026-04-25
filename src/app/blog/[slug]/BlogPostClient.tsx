@@ -15,6 +15,40 @@ function formatDate(dateStr: string) {
   })
 }
 
+function extractYouTubeId(urlOrId: string) {
+  const raw = (urlOrId || '').trim()
+  if (!raw) return null
+
+  // Allow pasting an ID directly (11 chars, common pattern)
+  if (/^[a-zA-Z0-9_-]{11}$/.test(raw)) return raw
+
+  try {
+    const u = new URL(raw)
+
+    // youtu.be/<id>
+    if (u.hostname === 'youtu.be') {
+      const id = u.pathname.split('/').filter(Boolean)[0]
+      return id && /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : null
+    }
+
+    // *.youtube.com/watch?v=<id>
+    if (u.hostname.endsWith('youtube.com')) {
+      const v = u.searchParams.get('v')
+      if (v && /^[a-zA-Z0-9_-]{11}$/.test(v)) return v
+
+      // /embed/<id> or /shorts/<id>
+      const parts = u.pathname.split('/').filter(Boolean)
+      const idx = parts.findIndex((p) => p === 'embed' || p === 'shorts')
+      const id = idx >= 0 ? parts[idx + 1] : undefined
+      return id && /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : null
+    }
+  } catch {
+    // ignore invalid URLs
+  }
+
+  return null
+}
+
 export default function BlogPostClient({ slug }: { slug: string }) {
   const [post, setPost] = useState<BlogPost | null>(null)
   const [loading, setLoading] = useState(true)
@@ -113,6 +147,31 @@ export default function BlogPostClient({ slug }: { slug: string }) {
           <p className='text-lg text-gray-700 dark:text-gray-300 mb-8 font-semibold'>
             {post.excerpt}
           </p>
+        )}
+
+        {!!post.youtubeUrls?.length && (
+          <section className='mb-10'>
+            <div className='space-y-6'>
+              {post.youtubeUrls
+                .map((u) => extractYouTubeId(u))
+                .filter((id): id is string => Boolean(id))
+                .map((id) => (
+                  <div
+                    key={id}
+                    className='relative w-full aspect-video rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700'
+                  >
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${id}`}
+                      title='YouTube video player'
+                      className='absolute inset-0 w-full h-full'
+                      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                      referrerPolicy='strict-origin-when-cross-origin'
+                      allowFullScreen
+                    />
+                  </div>
+                ))}
+            </div>
+          </section>
         )}
 
         <div className='prose prose-lg dark:prose-invert max-w-none font-medium'>

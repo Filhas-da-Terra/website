@@ -96,6 +96,7 @@ export interface BlogPost {
   excerpt: string
   content: string
   imageUrl: string | null
+  youtubeUrls?: string[]
   published: boolean
   createdAt: string
   updatedAt: string
