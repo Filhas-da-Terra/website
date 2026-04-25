@@ -149,8 +149,14 @@ export default function BlogPostClient({ slug }: { slug: string }) {
           </p>
         )}
 
+        <div className='prose prose-lg dark:prose-invert max-w-none font-medium'>
+          <div className='whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed'>
+            {post.content}
+          </div>
+        </div>
+
         {!!post.youtubeUrls?.length && (
-          <section className='mb-10'>
+          <section className='mb-10 mt-10'>
             <div className='space-y-6'>
               {post.youtubeUrls
                 .map((u) => extractYouTubeId(u))
@@ -173,12 +179,6 @@ export default function BlogPostClient({ slug }: { slug: string }) {
             </div>
           </section>
         )}
-
-        <div className='prose prose-lg dark:prose-invert max-w-none font-medium'>
-          <div className='whitespace-pre-wrap text-gray-700 dark:text-gray-300 leading-relaxed'>
-            {post.content}
-          </div>
-        </div>
 
         {(post.author || post.authorBio || post.authorImageUrl) && (
           <section className='mt-12 pt-8 border-t border-gray-200 dark:border-gray-700'>
