@@ -52,12 +52,12 @@ export default function Header() {
           >
             Projetos
           </Link>
-          <Link
+          {/* <Link
             href='/eventos'
             className={`hover:underline transition-colors ${pathname === '/eventos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
           >
             Eventos
-          </Link>
+          </Link> */}
           <Link
             href='/conteudos'
             className={`hover:underline transition-colors ${pathname === '/conteudos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
@@ -145,13 +145,13 @@ export default function Header() {
                 >
                   Projetos
                 </Link>
-                <Link
+                {/* <Link
                   href='/eventos'
                   className={`transition-colors ${pathname === '/eventos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
                   onClick={() => setOpenMenu(false)}
                 >
                   Eventos
-                </Link>
+                </Link> */}
                 <Link
                   href='/conteudos'
                   className={`transition-colors ${pathname === '/conteudos' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
@@ -173,13 +173,13 @@ export default function Header() {
                 >
                   Contato
                 </Link>
-                <Link
+                {/* <Link
                   href='/transparencia'
                   className={`transition-colors ${pathname === '/transparencia' ? 'underline font-semibold text-[#92400e] dark:text-orange-400' : 'hover:text-[#92400e] dark:hover:text-orange-400'}`}
                   onClick={() => setOpenMenu(false)}
                 >
                   Transparencia
-                </Link>
+                </Link> */}
                 <Button
                   className='bg-[#92400e] text-white hover:bg-[#78350f] w-full flex items-center gap-2'
                   onClick={() => setOpenPix(true)}
