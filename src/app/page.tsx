@@ -12,6 +12,7 @@ import {
 import { Card, CardContent } from '@/components/ui/card'
 import { Lightbulb, HeartHandshake, Leaf, Users, Computer } from 'lucide-react'
 import CarouselComponent from '@/components/ui/carouselComponent'
+import VolunteerModal from '@/components/ui/volunteerModal'
 import { useEffect, useState } from 'react'
 import type { CarouselImage, PublicAlert } from '@/types'
 
@@ -20,6 +21,7 @@ export default function Home() {
   const [images, setImages] = useState<CarouselImage[]>([])
   const [alert, setAlert] = useState<PublicAlert | null>(null)
   const [showAlert, setShowAlert] = useState(false)
+  const [showVolunteerModal, setShowVolunteerModal] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -57,6 +59,12 @@ export default function Home() {
     }
     fetchImages()
     fetchAlert()
+
+    const timer = setTimeout(() => {
+      setShowVolunteerModal(true)
+    }, 3000)
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -234,6 +242,11 @@ export default function Home() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <VolunteerModal
+        open={showVolunteerModal}
+        onOpenChange={setShowVolunteerModal}
+      />
     </main>
   )
 }
