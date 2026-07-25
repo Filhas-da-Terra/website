@@ -141,7 +141,7 @@ export default function VolunteerModal({
 
           <div className='border-2 p-4 rounded-lg text-center'>
             <p className='font-bold text-gray-700 dark:text-gray-300 text-lg'>
-              📅 Inscrições abertas até 13 de julho.
+              📅 Inscrições abertas até 27 de julho.
             </p>
             <p className='text-sm text-gray-700 dark:text-gray-300'>
               Não deixe para a última hora. Garanta sua vaga e venha construir
