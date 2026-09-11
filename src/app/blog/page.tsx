@@ -93,12 +93,12 @@ export default function BlogPage() {
               >
                 <Link href={`/blog/${post.slug}`}>
                   {post.imageUrl ? (
-                    <div className='relative h-64 w-full overflow-hidden bg-gray-200 dark:bg-gray-700'>
+                    <div className='relative h-64 w-full overflow-hidden bg-gray-100 dark:bg-gray-800'>
                       <Image
                         src={post.imageUrl}
                         alt={post.title}
                         fill
-                        className='object-cover group-hover:scale-105 transition-transform duration-300'
+                        className='object-contain group-hover:scale-105 transition-transform duration-300'
                       />
                     </div>
                   ) : (
