@@ -122,12 +122,12 @@ export default function BlogPostClient({ slug }: { slug: string }) {
         </Link>
 
         {post.imageUrl && (
-          <div className='relative w-full aspect-video rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 mb-8'>
+          <div className='relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800 mb-8'>
             <Image
               src={post.imageUrl}
               alt={post.title}
               fill
-              className='object-cover'
+              className='object-contain'
               priority
             />
           </div>
